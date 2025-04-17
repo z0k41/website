@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Personal Portfolio</title>
+    <title>0Byte | Personal Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset and base styles */
@@ -140,6 +140,41 @@
             color: #ffffff;
             font-size: 1.5rem;
             cursor: pointer;
+        }
+
+        /* Mobile menu - hidden by default */
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: #0f0f0f;
+            padding: 20px;
+            border-bottom: 1px solid #222222;
+            display: none;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-social {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .mobile-social a {
+            margin: 0 10px;
+            font-size: 1.2rem;
         }
 
         /* Hero section */
@@ -486,44 +521,6 @@
                 display: block;
             }
 
-            .mobile-menu {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: #0f0f0f;
-                padding: 20px;
-                border-bottom: 1px solid #222222;
-                display: none;
-            }
-
-            .mobile-menu.active {
-                display: block;
-            }
-
-            .mobile-menu ul {
-                list-style: none;
-            }
-
-            .mobile-menu li {
-                margin-bottom: 15px;
-            }
-
-            .mobile-social {
-                display: flex;
-                justify-content: center;
-                margin-top: 20px;
-            }
-
-            .mobile-social a {
-                margin: 0 10px;
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
             .hero-text h1 {
                 font-size: 2.5rem;
             }
@@ -563,7 +560,7 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo"><span class="text-red">J</span>ohn<span class="text-red">D</span>oe</a>
+            <a href="#" class="logo"><span class="text-red">0</span>Byte</a>
             
             <nav>
                 <ul class="nav-links">
@@ -610,7 +607,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <span class="badge">Available for hire</span>
-                    <h1>Hi, I'm <span class="text-red">John Doe</span></h1>
+                    <h1>Hi, I'm <span class="text-red">0Byte</span></h1>
                     <p>A passionate full-stack developer specializing in creating beautiful, functional, and user-centered digital experiences.</p>
                     
                     <div class="hero-buttons">
@@ -620,7 +617,7 @@
                 </div>
                 
                 <div class="hero-image">
-                    <img src="https://via.placeholder.com/300" alt="John Doe" class="profile-img">
+                    <img src="https://via.placeholder.com/300" alt="0Byte" class="profile-img">
                 </div>
             </div>
         </div>
@@ -788,17 +785,17 @@
                     
                     <div class="contact-method">
                         <i class="fas fa-envelope"></i>
-                        <a href="mailto:hello@johndoe.com">hello@johndoe.com</a>
+                        <a href="mailto:hello@0byte.dev">hello@0byte.dev</a>
                     </div>
                     
                     <div class="contact-method">
                         <i class="fab fa-linkedin"></i>
-                        <a href="#">linkedin.com/in/johndoe</a>
+                        <a href="#">linkedin.com/in/0byte</a>
                     </div>
                     
                     <div class="contact-method">
                         <i class="fab fa-github"></i>
-                        <a href="#">github.com/johndoe</a>
+                        <a href="#">github.com/0byte</a>
                     </div>
                 </div>
                 
@@ -831,7 +828,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-text">
-                    <p>&copy; <span id="currentYear"></span> John Doe. All rights reserved.</p>
+                    <p>&copy; <span id="currentYear"></span> 0Byte. All rights reserved.</p>
                 </div>
                 
                 <div class="footer-social">
