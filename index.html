@@ -523,115 +523,98 @@
         }
 
         /* Projects section */
-.projects {
-    background-color: rgba(15, 15, 15, 0.5);
-    position: relative;
-}
+        .projects {
+            background-color: rgba(15, 15, 15, 0.5);
+            position: relative;
+        }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-}
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
 
-.project-card {
-    background-color: rgba(20, 20, 20, 0.8);
-    border: 1px solid rgba(1, 255, 212, 0.1);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    position: relative;
-}
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(1, 255, 212, 0.2);
-    border-color: rgba(1, 255, 212, 0.3);
-}
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(1, 255, 212, 0.1);
+        }
 
-.project-img-container {
-    position: relative;
-    overflow: hidden;
-    height: 200px;
-}
+        .project-img-container {
+            position: relative;
+            overflow: hidden;
+        }
 
-.project-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
 
-.project-card:hover .project-img {
-    transform: scale(1.05);
-}
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
 
-.project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
 
-.project-content {
-    padding: 25px;
-    position: relative;
-}
+        .project-content {
+            padding: 25px;
+        }
 
-.project-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(1, 255, 212, 0.03)' fill-rule='evenodd'/%3E%3C/svg%3E");
-    opacity: 0.5;
-    z-index: -1;
-}
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
 
-.project-content h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: #01ffd4;
-}
+        .project-content p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
 
-.project-content p {
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 15px;
-}
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
 
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-}
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
 
-.project-links {
-    display: flex;
-    gap: 10px;
-}
+        .project-links .btn {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
 
-.project-links .btn {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-}
-
-.view-all {
-    text-align: center;
-    margin-top: 50px;
-}
+        .view-all {
+            text-align: center;
+            margin-top: 50px;
+        }
 
         /* Services section */
         .services {
@@ -711,93 +694,59 @@
         }
 
         /* Tools section */
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 25px;
-}
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 25px;
+        }
 
-.tool-card {
-    background-color: rgba(20, 20, 20, 0.8);
-    border: 1px solid rgba(1, 255, 212, 0.1);
-    border-radius: 12px;
-    padding: 25px 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
+        .tool-card {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
 
-.tool-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 10px,
-        rgba(1, 255, 212, 0.03) 10px,
-        rgba(1, 255, 212, 0.03) 20px
-    );
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(1, 255, 212, 0.1);
+            background-color: rgba(1, 255, 212, 0.03);
+        }
 
-.tool-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(1, 255, 212, 0.2);
-    border-color: rgba(1, 255, 212, 0.3);
-    background-color: rgba(1, 255, 212, 0.05);
-}
+        .tool-icon {
+            font-size: 2rem;
+            color: #01ffd4;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
 
-.tool-card:hover::before {
-    opacity: 1;
-}
+        .tool-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(1, 255, 212, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+        }
 
-.tool-icon {
-    font-size: 2rem;
-    color: #01ffd4;
-    margin-bottom: 15px;
-    position: relative;
-    display: inline-block;
-}
+        .tool-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
 
-.tool-icon::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background-color: rgba(1, 255, 212, 0.1);
-    border-radius: 50%;
-    z-index: -1;
-    transition: all 0.3s ease;
-}
-
-.tool-card:hover .tool-icon::after {
-    width: 70px;
-    height: 70px;
-    background-color: rgba(1, 255, 212, 0.2);
-}
-
-.tool-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #01ffd4;
-}
-
-.tool-card p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
-}
+        .tool-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
 
         /* Footer */
         footer {
@@ -919,215 +868,85 @@
         }
 
         /* Responsive styles */
-@media (max-width: 992px) {
-    .hero-content,
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
+        @media (max-width: 992px) {
+            .hero-content,
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
 
-    .hero-image {
-        order: -1;
-    }
+            .hero-image {
+                order: -1;
+            }
 
-    .profile-img {
-        width: 250px;
-        height: 250px;
-    }
+            .profile-img {
+                width: 250px;
+                height: 250px;
+            }
 
-    .hero-text h1 {
-        font-size: 2.8rem;
-    }
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
 
-    .section {
-        padding: 80px 0;
-    }
-    
-    .tools-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    }
-}
+            .section {
+                padding: 80px 0;
+            }
+        }
 
-@media (max-width: 768px) {
-    .nav-links,
-    .social-links {
-        display: none;
-    }
+        @media (max-width: 768px) {
+            .nav-links,
+            .social-links {
+                display: none;
+            }
 
-    .menu-btn {
-        display: block;
-    }
+            .menu-btn {
+                display: block;
+            }
 
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
 
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
 
-    .section-title {
-        font-size: 2.2rem;
-    }
-    
-    .projects-grid,
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .tools-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 15px;
-    }
-    
-    .tool-card {
-        padding: 20px 15px;
-    }
-    
-    .tool-icon {
-        font-size: 1.8rem;
-    }
-    
-    .tool-card h3 {
-        font-size: 1rem;
-    }
-    
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-}
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
 
-@media (max-width: 576px) {
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
+        @media (max-width: 576px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
 
-    .btn {
-        width: 100%;
-        justify-content: center;
-    }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
 
-    .profile-img {
-        width: 200px;
-        height: 200px;
-    }
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
 
-    .hero-text h1 {
-        font-size: 2rem;
-    }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
 
-    .section {
-        padding: 60px 0;
-    }
+            .section {
+                padding: 60px 0;
+            }
 
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
-    .tools-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .counter-value {
-        font-size: 2.5rem;
-    }
-    
-    .counter-label {
-        font-size: 0.9rem;
-    }
-    
-    .project-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .project-links .btn {
-        width: 100%;
-    }
-}
+            .section-title {
+                font-size: 2rem;
+            }
+        }
 
-/* Add a terminal-like effect to the tools section */
-.tools-section-header {
-    position: relative;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.terminal-bar {
-    background-color: rgba(1, 255, 212, 0.1);
-    border-radius: 8px 8px 0 0;
-    padding: 8px 15px;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 300px;
-    margin-bottom: 10px;
-}
-
-.terminal-buttons {
-    display: flex;
-    gap: 8px;
-}
-
-.terminal-button {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.terminal-button.red {
-    background-color: #ff5f56;
-}
-
-.terminal-button.yellow {
-    background-color: #ffbd2e;
-}
-
-.terminal-button.green {
-    background-color: #27c93f;
-}
-
-.terminal-title {
-    flex-grow: 1;
-    text-align: center;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-/* Add a hacker-style effect to the projects section */
-.projects-header {
-    position: relative;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.code-line {
-    font-family: monospace;
-    color: #01ffd4;
-    font-size: 0.9rem;
-    text-align: center;
-    margin-bottom: 10px;
-    opacity: 0.7;
-}
-
-.blinking-cursor {
-    display: inline-block;
-    width: 8px;
-    height: 16px;
-    background-color: #01ffd4;
-    animation: blink 1s infinite;
-    vertical-align: middle;
-    margin-left: 5px;
-}
-
-@keyframes blink {
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0; }
-}
     /* Animation utilities */
     .fade-in {
         opacity: 0;
@@ -1307,205 +1126,6 @@
             transform: scale(1);
         }
     }
-
-/* Add these styles to improve mobile experience */
-@media (max-width: 576px) {
-    /* Improve header on mobile */
-    .header-container {
-        height: 60px;
-    }
-    
-    .logo {
-        font-size: 1.3rem;
-    }
-    
-    .menu-btn {
-        font-size: 1.3rem;
-    }
-    
-    /* Improve hero section on mobile */
-    .hero {
-        padding-top: 60px;
-    }
-    
-    .hero-text {
-        text-align: center;
-    }
-    
-    .badge {
-        margin: 0 auto 20px;
-        display: inline-flex;
-    }
-    
-    /* Improve section spacing on mobile */
-    .section {
-        padding: 50px 0;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 40px;
-    }
-    
-    /* Improve about section on mobile */
-    .about-text h3, 
-    .about-timeline h3 {
-        font-size: 1.5rem;
-    }
-    
-    .timeline-item {
-        padding: 20px;
-    }
-    
-    /* Improve skills section on mobile */
-    .skill-card {
-        padding: 20px;
-    }
-    
-    .skill-card h3 {
-        font-size: 1.3rem;
-    }
-    
-    /* Improve services section on mobile */
-    .service-card {
-        padding: 25px;
-    }
-    
-    .service-icon {
-        font-size: 2rem;
-    }
-    
-    .service-card h3 {
-        font-size: 1.3rem;
-    }
-    
-    /* Improve projects section on mobile */
-    .project-img-container {
-        height: 180px;
-    }
-    
-    .project-content {
-        padding: 20px;
-    }
-    
-    /* Improve tools section on mobile */
-    .tools-grid {
-        gap: 15px;
-    }
-    
-    .tool-card {
-        padding: 15px;
-    }
-    
-    .tool-icon {
-        margin-bottom: 10px;
-    }
-    
-    .tool-card h3 {
-        margin-bottom: 5px;
-    }
-    
-    /* Improve stats section on mobile */
-    .stat-item {
-        padding: 20px 15px;
-    }
-    
-    .counter-value {
-        font-size: 2.2rem;
-    }
-    
-    .counter-value::after {
-        right: -15px;
-        font-size: 1.5rem;
-    }
-    
-    .counter-label {
-        font-size: 0.9rem;
-    }
-    
-    /* Improve footer on mobile */
-    footer {
-        padding: 30px 0;
-    }
-    
-    /* Fix terminal and code elements on mobile */
-    .terminal-bar {
-        max-width: 250px;
-    }
-    
-    .code-line {
-        font-size: 0.8rem;
-    }
-}
-
-/* Add touch-friendly improvements */
-@media (max-width: 768px) {
-    /* Make buttons more touch-friendly */
-    .btn {
-        padding: 12px 24px;
-        min-height: 44px;
-    }
-    
-    /* Improve mobile menu */
-    .mobile-menu {
-        padding: 15px 20px;
-    }
-    
-    .mobile-menu li {
-        margin-bottom: 10px;
-    }
-    
-    .mobile-menu a {
-        padding: 12px 0;
-        display: block;
-        font-size: 1.1rem;
-    }
-    
-    /* Add active states for touch */
-    .btn:active {
-        transform: scale(0.98);
-    }
-    
-    .project-card:active,
-    .service-card:active,
-    .skill-card:active,
-    .tool-card:active,
-    .stat-item:active {
-        transform: scale(0.98);
-    }
-}
-
-/* Add cybersecurity theme enhancements */
-.matrix-effect {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2301ffd4' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    z-index: -1;
-    opacity: 0.5;
-}
-
-.binary-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    z-index: -1;
-    overflow: hidden;
-}
-
-.binary-text {
-    position: absolute;
-    color: rgba(1, 255, 212, 0.05);
-    font-family: monospace;
-    font-size: 14px;
-    white-space: nowrap;
-    user-select: none;
-}
     </style>
 </head>
 <body>
@@ -1523,7 +1143,7 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo"><span class="text-accent">0</span>Byte</a>
+            <a href="#" class="logo"><span class="text-accent">Byte</span>0</a>
             
             <nav>
                 <ul class="nav-links">
@@ -1561,8 +1181,6 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="matrix-effect"></div>
-        <div class="binary-bg"></div>
         <div class="glow glow-1"></div>
         <div class="glow glow-2"></div>
         
@@ -1588,8 +1206,6 @@
 
     <!-- About Section -->
     <section class="section about" id="about">
-        <div class="matrix-effect"></div>
-        <div class="binary-bg"></div>
         <div class="glow glow-3"></div>
         <div class="container">
             <h2 class="section-title fade-in">Who am <span>I</span></h2>
@@ -1628,8 +1244,6 @@
 
     <!-- Skills Section -->
     <section class="section skills" id="skills">
-        <div class="matrix-effect"></div>
-        <div class="binary-bg"></div>
         <div class="container">
             <h2 class="section-title fade-in">My <span>Skills</span></h2>
             
@@ -1668,8 +1282,6 @@
 
     <!-- Services Section -->
     <section class="section services" id="services">
-        <div class="matrix-effect"></div>
-        <div class="binary-bg"></div>
         <div class="glow glow-2"></div>
         <div class="container">
             <h2 class="section-title fade-in">My <span>Services</span></h2>
@@ -1711,181 +1323,157 @@
     </section>
 
     <!-- Projects Section -->
-    
-<section class="section projects" id="projects">
-    <div class="matrix-effect"></div>
-    <div class="binary-bg"></div>
-    <div class="glow glow-1"></div>
-    <div class="container">
-        <h2 class="section-title fade-in">Featured <span>Projects</span></h2>
-        
-        <div class="projects-header fade-in">
-            <div class="code-line">$ ./show_projects.sh --featured</div>
-            <div class="code-line">Loading projects... <span class="blinking-cursor"></span></div>
-        </div>
-        
-        <div class="projects-grid fade-in">
-            <!-- Project 1 -->
-            <div class="project-card">
-                <div class="project-img-container">
-                    <img src="images/Project1.png" alt="Project 1" class="project-img">
-                    <div class="project-overlay"></div>
-                </div>
-                <div class="project-content">
-                    <h3>Website</h3>
-                    <p>Source code of this website.</p>
-                    <div class="project-tags">
-                        <span class="skill-tag tag-highlight">HTML</span>
-                        <span class="skill-tag tag-normal">CSS</span>
+    <section class="section projects" id="projects">
+        <div class="glow glow-1"></div>
+        <div class="container">
+            <h2 class="section-title fade-in">Featured <span>Projects</span></h2>
+            
+            <div class="projects-grid fade-in">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-img-container">
+                        <img src="images/Project1.png" alt="Project 1" class="project-img">
+                        <div class="project-overlay"></div>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Byte0-0x/website" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    <div class="project-content">
+                        <h3>Website</h3>
+                        <p>Source code of this website.</p>
+                        <div class="project-tags">
+                            <span class="skill-tag tag-highlight">HTML</span>
+                            <span class="skill-tag tag-normal">CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Byte0-0x/website" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-img-container">
+                        <img src="images/Project2.png" alt="Project 2" class="project-img">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Project 2</h3>
+                        <p>Soon.</p>
+                        <div class="project-tags">
+                            <span class="skill-tag tag-highlight">React</span>
+                            <span class="skill-tag tag-normal">Node.js</span>
+                            <span class="skill-tag tag-normal">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-img-container">
+                        <img src="images/Project3.png" alt="Project 3" class="project-img">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Project 3</h3>
+                        <p>Soon.</p>
+                        <div class="project-tags">
+                            <span class="skill-tag tag-highlight">React</span>
+                            <span class="skill-tag tag-normal">Node.js</span>
+                            <span class="skill-tag tag-normal">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Project 2 -->
-            <div class="project-card">
-                <div class="project-img-container">
-                    <img src="images/Project2.png" alt="Project 2" class="project-img">
-                    <div class="project-overlay"></div>
-                </div>
-                <div class="project-content">
-                    <h3>Project 2</h3>
-                    <p>Soon.</p>
-                    <div class="project-tags">
-                        <span class="skill-tag tag-highlight">React</span>
-                        <span class="skill-tag tag-normal">Node.js</span>
-                        <span class="skill-tag tag-normal">MongoDB</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project 3 -->
-            <div class="project-card">
-                <div class="project-img-container">
-                    <img src="images/Project3.png" alt="Project 3" class="project-img">
-                    <div class="project-overlay"></div>
-                </div>
-                <div class="project-content">
-                    <h3>Project 3</h3>
-                    <p>Soon.</p>
-                    <div class="project-tags">
-                        <span class="skill-tag tag-highlight">React</span>
-                        <span class="skill-tag tag-normal">Node.js</span>
-                        <span class="skill-tag tag-normal">MongoDB</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
-                </div>
+            <div class="view-all">
+                <a href="https://github.com/Byte0-0x" class="btn btn-primary">View All Projects <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
-        
-        <div class="view-all">
-            <a href="https://github.com/Byte0-0x" class="btn btn-primary">View All Projects <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Tools Section -->
-    
-<section class="section" id="tools">
-    <div class="glow glow-3"></div>
-    <div class="binary-bg" id="binaryBackground"></div>
-    <div class="matrix-effect"></div>
-    <div class="container">
-        <h2 class="section-title fade-in">Favorite <span>Tools</span></h2>
-        
-        <div class="tools-section-header fade-in">
-            <div class="terminal-bar">
-                <div class="terminal-buttons">
-                    <div class="terminal-button red"></div>
-                    <div class="terminal-button yellow"></div>
-                    <div class="terminal-button green"></div>
+    <section class="section" id="tools">
+        <div class="glow glow-3"></div>
+        <div class="container">
+            <h2 class="section-title fade-in">Favorite <span>Tools</span></h2>
+            
+            <div class="tools-grid fade-in">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Wireshark</h3>
+                    <p>Network protocol analyzer</p>
                 </div>
-                <div class="terminal-title">tools.sh</div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Nmap</h3>
+                    <p>Network discovery tool</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Hashcat</h3>
+                    <p>Password recovery tool</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Aircrack-ng</h3>
+                    <p>Wireless security suite</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Metasploit</h3>
+                    <p>Penetration testing framework</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-spider"></i>
+                    </div>
+                    <h3>Burp Suite</h3>
+                    <p>Web vulnerability scanner</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>Kali Linux</h3>
+                    <p>Security-focused OS</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-lock-open"></i>
+                    </div>
+                    <h3>John the Ripper</h3>
+                    <p>Password cracker</p>
+                </div>
             </div>
         </div>
-        
-        <div class="tools-grid fade-in">
-            <div class="tool-card">
-                <div class="tool-icon">
-                    <i class="fas fa-network-wired"></i>
-                </div>
-                <h3>Wireshark</h3>
-                <p>Network protocol analyzer</p>
-            </div>
-            
-            <div class="tool-card">
-                <div class="tool-icon">
-                    <i class="fas fa-search"></i>
-                </div>
-                <h3>Nmap</h3>
-                <p>Network discovery tool</p>
-            </div>
-            
-            <div class="tool-card">
-                <div class="tool-icon">
-                    <i class="fas fa-key"></i>
-                </div>
-                <h3>Hashcat</h3>
-                <p>Password recovery tool</p>
-            </div>
-            
-            <div class="tool-card">
-                <div class="tool-icon">
-                    <i class="fas fa-wifi"></i>
-                </div>
-                <h3>Aircrack-ng</h3>
-                <p>Wireless security suite</p>
-            </div>
-            
-            <div class="tool-card">
-                <div class="tool-icon">
-                    <i class="fas fa-bug"></i>
-                </div>
-                <h3>Metasploit</h3>
-                <p>Penetration testing framework</p>
-            </div>
-            
-            <div class="tool-card">
-                <div class="tool-icon">
-                    <i class="fas fa-spider"></i>
-                </div>
-                <h3>Burp Suite</h3>
-                <p>Web vulnerability scanner</p>
-            </div>
-            
-            <div class="tool-card">
-                <div class="tool-icon">
-                    <i class="fas fa-terminal"></i>
-                </div>
-                <h3>Kali Linux</h3>
-                <p>Security-focused OS</p>
-            </div>
-            
-            <div class="tool-card">
-                <div class="tool-icon">
-                    <i class="fas fa-lock-open"></i>
-                </div>
-                <h3>John the Ripper</h3>
-                <p>Password cracker</p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Stats Section -->
     <section class="section services">
-        <div class="matrix-effect"></div>
-        <div class="binary-bg"></div>
         <div class="glow glow-2"></div>
         <div class="container">
             <h2 class="section-title fade-in">My <span>Stats</span></h2>
@@ -1912,8 +1500,6 @@
 
     <!-- Footer -->
     <footer>
-        <div class="matrix-effect"></div>
-        <div class="binary-bg"></div>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-text">
@@ -2068,59 +1654,5 @@
             counterObserver.observe(counter);
         });
     </script>
-
-    // Add this to the existing JavaScript at the bottom of the file
-    function createBinaryBackground() {
-        const binaryBg = document.getElementById('binaryBackground');
-        if (!binaryBg) return;
-        
-        const characters = '01';
-        const numberOfElements = 20;
-        
-        for (let i = 0; i < numberOfElements; i++) {
-            const element = document.createElement('div');
-            element.className = 'binary-text';
-            
-            // Generate random binary string
-            let text = '';
-            const length = Math.floor(Math.random() * 20) + 10;
-            for (let j = 0; j < length; j++) {
-                text += characters.charAt(Math.floor(Math.random() * characters.length));
-            }
-            
-            element.textContent = text;
-            
-            // Random position
-            const posX = Math.random() * 100;
-            const posY = Math.random() * 100;
-            
-            // Random animation
-            const duration = Math.random() * 30 + 10;
-            const delay = Math.random() * 5;
-            
-            element.style.left = `${posX}%`;
-            element.style.top = `${posY}%`;
-            element.style.opacity = Math.random() * 0.5 + 0.1;
-            element.style.animation = `fadeInOut ${duration}s infinite ${delay}s`;
-            
-            binaryBg.appendChild(element);
-        }
-    }
-    
-    // Call the function after the page loads
-    window.addEventListener('load', function() {
-        createBinaryBackground();
-        
-        // Add this animation to the style section
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeInOut {
-                0%, 100% { opacity: 0; }
-                50% { opacity: 0.3; }
-            }
-        `;
-        document.head.appendChild(style);
-    });
-</script>
 </body>
 </html>
