@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte0 | About Me</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <style>
         /* Reset and base styles */
         * {
@@ -18,8 +19,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f0f0f;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #0a0a0a;
             color: #ffffff;
             line-height: 1.6;
         }
@@ -27,7 +28,7 @@
         a {
             text-decoration: none;
             color: #ffffff;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         a:hover {
@@ -42,52 +43,78 @@
         }
 
         .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            gap: 8px;
+            letter-spacing: 0.3px;
         }
 
         .btn-primary {
             background-color: #01ffd4;
-            color: #222222;
+            color: #0a0a0a;
             border: none;
+            box-shadow: 0 4px 14px rgba(1, 255, 212, 0.25);
         }
 
         .btn-primary:hover {
-            background-color: #01ffd4;
-            color: #222222;
+            background-color: #00e6be;
+            color: #0a0a0a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(1, 255, 212, 0.3);
         }
 
         .btn-outline {
             background-color: transparent;
             color: #ffffff;
-            border: 1px solid #333333;
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .btn-outline:hover {
-            background-color: #1a1a1a;
-            border-color: #1a1a1a;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         .section {
-            padding: 80px 0;
+            padding: 100px 0;
+            position: relative;
         }
 
         .section-title {
             font-size: 2.5rem;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             text-align: center;
             font-weight: 700;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(1, 255, 212, 0.8), rgba(1, 255, 212, 0.2));
+            border-radius: 2px;
         }
 
         .section-title span {
             color: #01ffd4;
         }
 
-        .text-red {
+        .text-accent {
             color: #01ffd4;
         }
 
@@ -98,9 +125,10 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(15, 15, 15, 0.9);
+            background-color: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #222222;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
         }
 
         .header-container {
@@ -113,24 +141,71 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #01ffd4;
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
+            gap: 30px;
         }
 
-        .nav-links li {
-            margin-left: 30px;
+        .nav-links a {
+            position: relative;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #01ffd4;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .social-links {
             display: flex;
+            gap: 15px;
         }
 
         .social-links a {
-            margin-left: 15px;
-            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: rgba(1, 255, 212, 0.1);
+            transform: translateY(-2px);
         }
 
         .menu-btn {
@@ -148,14 +223,20 @@
             top: 70px;
             left: 0;
             width: 100%;
-            background-color: #0f0f0f;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
             padding: 20px;
-            border-bottom: 1px solid #222222;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             display: none;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.3s ease;
         }
 
         .mobile-menu.active {
             display: block;
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .mobile-menu ul {
@@ -166,15 +247,27 @@
             margin-bottom: 15px;
         }
 
+        .mobile-menu a {
+            display: block;
+            padding: 10px 0;
+            font-weight: 500;
+        }
+
         .mobile-social {
             display: flex;
             justify-content: center;
+            gap: 15px;
             margin-top: 20px;
         }
 
         .mobile-social a {
-            margin: 0 10px;
-            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         /* Hero section */
@@ -184,12 +277,13 @@
             display: flex;
             align-items: center;
             padding-top: 70px;
+            overflow: hidden;
         }
 
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 60px;
             align-items: center;
         }
 
@@ -197,12 +291,14 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
+            font-weight: 800;
         }
 
         .hero-text p {
             font-size: 1.2rem;
             margin-bottom: 30px;
-            color: #aaaaaa;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 500px;
         }
 
         .hero-buttons {
@@ -213,6 +309,20 @@
 
         .hero-image {
             text-align: center;
+            position: relative;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(1, 255, 212, 0.15) 0%, rgba(1, 255, 212, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
         }
 
         .profile-img {
@@ -221,55 +331,118 @@
             border-radius: 50%;
             border: 4px solid #01ffd4;
             object-fit: cover;
+            box-shadow: 0 10px 30px rgba(1, 255, 212, 0.3);
         }
 
         .badge {
-            display: inline-block;
-            padding: 6px 12px;
-            background-color: #222222;
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 14px;
+            background-color: rgba(1, 255, 212, 0.1);
             color: #01ffd4;
-            border-radius: 20px;
+            border-radius: 30px;
             font-size: 0.9rem;
+            font-weight: 600;
             margin-bottom: 20px;
+            border: 1px solid rgba(1, 255, 212, 0.2);
+            gap: 6px;
+        }
+
+        .badge i {
+            font-size: 0.8rem;
         }
 
         /* About section */
         .about {
-            background-color: rgba(25, 25, 25, 0.5);
+            background-color: rgba(15, 15, 15, 0.5);
+            position: relative;
         }
 
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 60px;
         }
 
         .about-text h3 {
             font-size: 1.8rem;
             margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #01ffd4;
+            border-radius: 2px;
         }
 
         .about-text p {
             margin-bottom: 15px;
-            color: #aaaaaa;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
         }
 
         .timeline-item {
-            padding: 20px;
-            border: 1px solid #222222;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: #01ffd4;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(1, 255, 212, 0.1);
+        }
+
+        .timeline-item:hover::before {
+            transform: scaleY(1);
         }
 
         .timeline-item h4 {
             color: #01ffd4;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
         }
 
         .timeline-item .date {
             font-size: 0.9rem;
-            color: #666666;
-            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .timeline-item .date i {
+            font-size: 0.8rem;
+        }
+
+        .timeline-item p {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Skills section */
@@ -280,15 +453,43 @@
         }
 
         .skill-card {
-            background-color: #191919;
-            border: 1px solid #222222;
-            border-radius: 8px;
-            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #01ffd4, transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(1, 255, 212, 0.1);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
         }
 
         .skill-card h3 {
             font-size: 1.5rem;
             margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
         }
 
         .skill-tags {
@@ -298,24 +499,33 @@
         }
 
         .skill-tag {
-            padding: 6px 12px;
-            border-radius: 4px;
+            padding: 6px 14px;
+            border-radius: 30px;
             font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .tag-highlight {
-            background-color: #222222;
+            background-color: rgba(1, 255, 212, 0.1);
             color: #01ffd4;
+            border: 1px solid rgba(1, 255, 212, 0.2);
         }
 
         .tag-normal {
-            background-color: #222222;
-            color: #aaaaaa;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
         }
 
         /* Projects section */
         .projects {
-            background-color: rgba(25, 25, 25, 0.5);
+            background-color: rgba(15, 15, 15, 0.5);
+            position: relative;
         }
 
         .projects-grid {
@@ -325,9 +535,21 @@
         }
 
         .project-card {
-            background-color: #191919;
-            border: 1px solid #222222;
-            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(1, 255, 212, 0.1);
+        }
+
+        .project-img-container {
+            position: relative;
             overflow: hidden;
         }
 
@@ -335,24 +557,40 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
         }
 
         .project-card:hover .project-img {
             transform: scale(1.05);
         }
 
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
         .project-content {
-            padding: 20px;
+            padding: 25px;
         }
 
         .project-content h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .project-content p {
-            color: #aaaaaa;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 15px;
         }
 
@@ -360,7 +598,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .project-links {
@@ -375,61 +613,13 @@
 
         .view-all {
             text-align: center;
-            margin-top: 40px;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid #222222;
-            padding: 30px 0;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-text {
-            color: #666666;
-            font-size: 0.9rem;
-        }
-
-        .footer-social a {
-            margin-left: 20px;
-            color: #666666;
-            transition: color 0.3s ease;
-        }
-
-        .footer-social a:hover {
-            color: #01ffd4;
-        }
-
-        /* Glow effects */
-        .glow {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background-color: #01ffd4;
-            opacity: 0.1;
-            filter: blur(80px);
-            z-index: -1;
-        }
-
-        .glow-1 {
-            top: 20%;
-            left: 20%;
-        }
-
-        .glow-2 {
-            bottom: 20%;
-            right: 20%;
+            margin-top: 50px;
         }
 
         /* Services section */
         .services {
-            background-color: rgba(25, 25, 25, 0.5);
+            background-color: rgba(15, 15, 15, 0.5);
+            position: relative;
         }
 
         .services-grid {
@@ -439,18 +629,13 @@
         }
 
         .service-card {
-            background-color: #191919;
-            border: 1px solid #222222;
-            border-radius: 8px;
-            padding: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 35px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(1, 255, 212, 0.1);
         }
 
         .service-card::before {
@@ -466,6 +651,12 @@
             transition: transform 0.3s ease;
         }
 
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(1, 255, 212, 0.1);
+        }
+
         .service-card:hover::before {
             transform: scaleY(1);
         }
@@ -474,122 +665,206 @@
             font-size: 2.5rem;
             color: #01ffd4;
             margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .service-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(1, 255, 212, 0.1);
+            border-radius: 50%;
+            z-index: -1;
         }
 
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
+            font-weight: 600;
         }
 
         .service-card p {
-            color: #aaaaaa;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
         }
 
         /* Tools section */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .tool-card {
-            background-color: #191919;
-            border: 1px solid #222222;
-            border-radius: 8px;
-            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px 20px;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .tool-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(1, 255, 212, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(1, 255, 212, 0.1);
+            background-color: rgba(1, 255, 212, 0.03);
         }
 
         .tool-icon {
             font-size: 2rem;
             color: #01ffd4;
             margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .tool-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(1, 255, 212, 0.1);
+            border-radius: 50%;
+            z-index: -1;
         }
 
         .tool-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .tool-card p {
-            color: #aaaaaa;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
         }
 
-        /* Blog section */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 0;
+            background-color: rgba(10, 10, 10, 0.8);
         }
 
-        .blog-card {
-            background-color: #191919;
-            border: 1px solid #222222;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(1, 255, 212, 0.1);
-        }
-
-        .blog-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .blog-content {
-            padding: 20px;
-        }
-
-        .blog-date {
-            font-size: 0.8rem;
-            color: #666666;
-            margin-bottom: 10px;
-        }
-
-        .blog-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .blog-card p {
-            color: #aaaaaa;
-            margin-bottom: 15px;
-        }
-
-        .blog-tags {
+        .footer-content {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .read-more {
-            color: #01ffd4;
-            font-weight: 500;
-            display: inline-flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 5px;
         }
 
-        .read-more i {
-            transition: transform 0.3s ease;
+        .footer-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
         }
 
-        .read-more:hover i {
-            transform: translateX(3px);
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background-color: rgba(1, 255, 212, 0.1);
+            color: #01ffd4;
+            transform: translateY(-2px);
+        }
+
+        /* Glow effects */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #01ffd4;
+            opacity: 0.1;
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .glow-1 {
+            top: 20%;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+        }
+
+        .glow-2 {
+            bottom: 20%;
+            right: 20%;
+            width: 250px;
+            height: 250px;
+        }
+
+        .glow-3 {
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Stats section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(1, 255, 212, 0.1);
+        }
+
+        .counter-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #01ffd4;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .counter-value::after {
+            content: '+';
+            position: absolute;
+            top: 0;
+            right: -20px;
+            font-size: 2rem;
+            color: rgba(1, 255, 212, 0.5);
+        }
+
+        .counter-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
         /* Responsive styles */
@@ -597,7 +872,7 @@
             .hero-content,
             .about-content {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 40px;
             }
 
             .hero-image {
@@ -611,6 +886,10 @@
 
             .hero-text h1 {
                 font-size: 2.8rem;
+            }
+
+            .section {
+                padding: 80px 0;
             }
         }
 
@@ -631,17 +910,23 @@
             .footer-content {
                 flex-direction: column;
                 text-align: center;
-                gap: 15px;
+                gap: 20px;
             }
 
-            .footer-social a {
-                margin: 0 10px;
+            .section-title {
+                font-size: 2.2rem;
             }
         }
 
         @media (max-width: 576px) {
             .hero-buttons {
                 flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
             }
 
             .profile-img {
@@ -656,6 +941,10 @@
             .section {
                 padding: 60px 0;
             }
+
+            .section-title {
+                font-size: 2rem;
+            }
         }
 
     /* Animation utilities */
@@ -668,25 +957,6 @@
     .fade-in.visible {
         opacity: 1;
         transform: translateY(0);
-    }
-    
-    /* Hover animations */
-    .skill-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .skill-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(1, 255, 212, 0.1);
-    }
-    
-    .project-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(1, 255, 212, 0.1);
     }
     
     /* Animated background */
@@ -764,8 +1034,9 @@
     }
     
     header.scrolled {
-        background-color: rgba(15, 15, 15, 0.95);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        background-color: rgba(10, 10, 10, 0.95);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(1, 255, 212, 0.05);
     }
     
     /* Button animations */
@@ -839,19 +1110,6 @@
         }
     }
 
-    /* Number counter animation */
-    .counter-value {
-        font-size: 3rem;
-        font-weight: 700;
-        color: #01ffd4;
-        margin-bottom: 10px;
-    }
-
-    .counter-label {
-        color: #aaaaaa;
-        font-size: 1.1rem;
-    }
-
     /* Icon pulse animation */
     .pulse-icon {
         animation: icon-pulse 2s infinite;
@@ -885,7 +1143,7 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo"><span class="text-red">0</span>Byte</a>
+            <a href="#" class="logo"><span class="text-accent">0</span>Byte</a>
             
             <nav>
                 <ul class="nav-links">
@@ -894,7 +1152,6 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#tools">Tools</a></li>
-                    <li><a href="#blog">Blog</a></li>
                 </ul>
             </nav>
             
@@ -914,7 +1171,6 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#tools">Tools</a></li>
-                <li><a href="#blog">Blog</a></li>
             </ul>
             
             <div class="mobile-social">
@@ -931,13 +1187,13 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <span class="badge">Available</span>
-                    <h1><span class="typing-text">Hi, I'm <span class="text-red">Byte0</span></span></h1>
+                    <span class="badge"><i class="fas fa-circle"></i> Available for hire</span>
+                    <h1><span class="typing-text">Hi, I'm <span class="text-accent">Byte0</span></span></h1>
                     <p>A passionate PenTester specializing in coding, operating systems, and networking.</p>
                     
                     <div class="hero-buttons">
                         <a href="#services" class="btn btn-primary">My Services <i class="fas fa-arrow-right"></i></a>
-                        <a href="https://github.com/Byte0-0x" class="btn btn-outline">See My Work</a>
+                        <a href="https://github.com/Byte0-0x" class="btn btn-outline">See My Work <i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 
@@ -950,6 +1206,7 @@
 
     <!-- About Section -->
     <section class="section about" id="about">
+        <div class="glow glow-3"></div>
         <div class="container">
             <h2 class="section-title fade-in">Who am <span>I</span></h2>
             
@@ -965,19 +1222,19 @@
                     
                     <div class="timeline-item">
                         <h4>Networking</h4>
-                        <div class="date">2025 - Present</div>
+                        <div class="date"><i class="far fa-calendar-alt"></i> 2025 - Present</div>
                         <p>Learned Wireshark, Nmap and other networking tools</p>
                     </div>
                     
                     <div class="timeline-item">
                         <h4>Linux</h4>
-                        <div class="date">2024 - 2025</div>
-                        <p>Learned a lot about Linux filesystems and commands</p>.</p>
+                        <div class="date"><i class="far fa-calendar-alt"></i> 2024 - 2025</div>
+                        <p>Learned a lot about Linux filesystems and commands</p>
                     </div>
                     
                     <div class="timeline-item">
                         <h4>Cracking Passwords</h4>
-                        <div class="date">2025 - Present</div>
+                        <div class="date"><i class="far fa-calendar-alt"></i> 2025 - Present</div>
                         <p>Learned on how to crack passwords using various tools</p>
                     </div>
                 </div>
@@ -1025,6 +1282,7 @@
 
     <!-- Services Section -->
     <section class="section services" id="services">
+        <div class="glow glow-2"></div>
         <div class="container">
             <h2 class="section-title fade-in">My <span>Services</span></h2>
             
@@ -1066,13 +1324,17 @@
 
     <!-- Projects Section -->
     <section class="section projects" id="projects">
+        <div class="glow glow-1"></div>
         <div class="container">
             <h2 class="section-title fade-in">Featured <span>Projects</span></h2>
             
             <div class="projects-grid fade-in">
                 <!-- Project 1 -->
                 <div class="project-card">
-                    <img src="images/Project1.png" alt="Project 1" class="project-img">
+                    <div class="project-img-container">
+                        <img src="images/Project1.png" alt="Project 1" class="project-img">
+                        <div class="project-overlay"></div>
+                    </div>
                     <div class="project-content">
                         <h3>Website</h3>
                         <p>Source code of this website.</p>
@@ -1089,7 +1351,10 @@
                 
                 <!-- Project 2 -->
                 <div class="project-card">
-                    <img src="images/Project2.png" alt="Project 2" class="project-img">
+                    <div class="project-img-container">
+                        <img src="images/Project2.png" alt="Project 2" class="project-img">
+                        <div class="project-overlay"></div>
+                    </div>
                     <div class="project-content">
                         <h3>Project 2</h3>
                         <p>Soon.</p>
@@ -1107,7 +1372,10 @@
                 
                 <!-- Project 3 -->
                 <div class="project-card">
-                    <img src="images/Project3.png" alt="Project 3" class="project-img">
+                    <div class="project-img-container">
+                        <img src="images/Project3.png" alt="Project 3" class="project-img">
+                        <div class="project-overlay"></div>
+                    </div>
                     <div class="project-content">
                         <h3>Project 3</h3>
                         <p>Soon.</p>
@@ -1132,6 +1400,7 @@
 
     <!-- Tools Section -->
     <section class="section" id="tools">
+        <div class="glow glow-3"></div>
         <div class="container">
             <h2 class="section-title fade-in">Favorite <span>Tools</span></h2>
             
@@ -1203,78 +1472,27 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section class="section blog" id="blog">
-        <div class="container">
-            <h2 class="section-title fade-in">Latest <span>Articles</span></h2>
-            
-            <div class="blog-grid fade-in">
-                <div class="blog-card">
-                    <img src="images/Project1.png" alt="Blog Post 1" class="blog-img">
-                    <div class="blog-content">
-                        <div class="blog-date">April 15, 2025</div>
-                        <h3>Common Network Vulnerabilities and How to Fix Them</h3>
-                        <p>A comprehensive guide to identifying and patching the most common network security issues.</p>
-                        <div class="blog-tags">
-                            <span class="skill-tag tag-highlight">Security</span>
-                            <span class="skill-tag tag-normal">Networking</span>
-                        </div>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="blog-card">
-                    <img src="images/Project2.png" alt="Blog Post 2" class="blog-img">
-                    <div class="blog-content">
-                        <div class="blog-date">March 28, 2025</div>
-                        <h3>Securing Your Home Network: A Step-by-Step Guide</h3>
-                        <p>Learn how to protect your home network from common threats with these simple steps.</p>
-                        <div class="blog-tags">
-                            <span class="skill-tag tag-highlight">Home Security</span>
-                            <span class="skill-tag tag-normal">WiFi</span>
-                        </div>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="blog-card">
-                    <img src="images/Project3.png" alt="Blog Post 3" class="blog-img">
-                    <div class="blog-content">
-                        <div class="blog-date">February 10, 2025</div>
-                        <h3>The Rise of AI in Cybersecurity: Threat or Opportunity?</h3>
-                        <p>Exploring how artificial intelligence is changing the landscape of cybersecurity.</p>
-                        <div class="blog-tags">
-                            <span class="skill-tag tag-highlight">AI</span>
-                            <span class="skill-tag tag-normal">Cybersecurity</span>
-                        </div>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Stats Section -->
     <section class="section services">
+        <div class="glow glow-2"></div>
         <div class="container">
-            <div class="fade-in">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center;">
-                    <div>
-                        <div class="counter-value" data-count="50">0</div>
-                        <div class="counter-label">Projects Completed</div>
-                    </div>
-                    <div>
-                        <div class="counter-value" data-count="100">0</div>
-                        <div class="counter-label">Vulnerabilities Found</div>
-                    </div>
-                    <div>
-                        <div class="counter-value" data-count="25">0</div>
-                        <div class="counter-label">Happy Clients</div>
-                    </div>
-                    <div>
-                        <div class="counter-value" data-count="5">0</div>
-                        <div class="counter-label">Years Experience</div>
-                    </div>
+            <h2 class="section-title fade-in">My <span>Stats</span></h2>
+            <div class="stats-grid fade-in">
+                <div class="stat-item">
+                    <div class="counter-value" data-count="50">0</div>
+                    <div class="counter-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="counter-value" data-count="100">0</div>
+                    <div class="counter-label">Vulnerabilities Found</div>
+                </div>
+                <div class="stat-item">
+                    <div class="counter-value" data-count="25">0</div>
+                    <div class="counter-label">Happy Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="counter-value" data-count="5">0</div>
+                    <div class="counter-label">Years Experience</div>
                 </div>
             </div>
         </div>
