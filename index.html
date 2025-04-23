@@ -231,6 +231,7 @@
             transform: translateY(-10px);
             opacity: 0;
             transition: all 0.3s ease;
+            z-index: 999;
         }
 
         .mobile-menu.active {
@@ -535,27 +536,30 @@
         }
 
         .project-card {
-            background-color: rgba(255, 255, 255, 0.02);
+            background-color: rgba(20, 20, 20, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-color: rgba(1, 255, 212, 0.1);
+            box-shadow: 0 10px 30px rgba(1, 255, 212, 0.1);
+            border-color: rgba(1, 255, 212, 0.2);
         }
 
         .project-img-container {
             position: relative;
             overflow: hidden;
+            height: 200px;
         }
 
         .project-img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
@@ -581,12 +585,14 @@
 
         .project-content {
             padding: 25px;
+            position: relative;
         }
 
         .project-content h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
             font-weight: 600;
+            color: #01ffd4;
         }
 
         .project-content p {
@@ -694,6 +700,11 @@
         }
 
         /* Tools section */
+        .tools-section {
+            position: relative;
+            overflow: hidden;
+        }
+
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -701,18 +712,21 @@
         }
 
         .tool-card {
-            background-color: rgba(255, 255, 255, 0.02);
+            background-color: rgba(20, 20, 20, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             padding: 25px 20px;
             text-align: center;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .tool-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-color: rgba(1, 255, 212, 0.1);
+            box-shadow: 0 10px 30px rgba(1, 255, 212, 0.1);
+            border-color: rgba(1, 255, 212, 0.2);
             background-color: rgba(1, 255, 212, 0.03);
         }
 
@@ -735,12 +749,20 @@
             background-color: rgba(1, 255, 212, 0.1);
             border-radius: 50%;
             z-index: -1;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover .tool-icon::after {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(1, 255, 212, 0.15);
         }
 
         .tool-card h3 {
             font-size: 1.1rem;
             margin-bottom: 8px;
             font-weight: 600;
+            color: #01ffd4;
         }
 
         .tool-card p {
@@ -867,6 +889,80 @@
             font-weight: 500;
         }
 
+        /* Tab navigation for tools and projects */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab-nav {
+            display: flex;
+            background-color: rgba(20, 20, 20, 0.5);
+            border-radius: 50px;
+            padding: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button {
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .tab-button.active {
+            background-color: rgba(1, 255, 212, 0.1);
+            color: #01ffd4;
+            box-shadow: 0 2px 10px rgba(1, 255, 212, 0.1);
+        }
+
+        .tab-button:hover:not(.active) {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section dividers */
+        .section-divider {
+            height: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .divider-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='rgba(15, 15, 15, 0.5)'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
         /* Responsive styles */
         @media (max-width: 992px) {
             .hero-content,
@@ -890,6 +986,10 @@
 
             .section {
                 padding: 80px 0;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
             }
         }
 
@@ -915,6 +1015,43 @@
 
             .section-title {
                 font-size: 2.2rem;
+            }
+            
+            .projects-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 15px;
+            }
+            
+            .tool-card {
+                padding: 20px 15px;
+            }
+            
+            .tool-icon {
+                font-size: 1.8rem;
+            }
+            
+            .tool-card h3 {
+                font-size: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .tab-nav {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .tab-button {
+                padding: 10px 15px;
+                font-size: 0.9rem;
             }
         }
 
@@ -943,189 +1080,282 @@
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .counter-value {
+                font-size: 2.5rem;
+            }
+            
+            .counter-label {
+                font-size: 0.9rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .project-links .btn {
+                width: 100%;
+            }
+
+            .tab-nav {
+                flex-direction: column;
+                border-radius: 12px;
+                width: 100%;
+            }
+
+            .tab-button {
+                border-radius: 8px;
+                margin: 3px;
+            }
+
+            .mobile-menu {
+                top: 60px;
+            }
+
+            .header-container {
+                height: 60px;
             }
         }
 
-    /* Animation utilities */
-    .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    /* Animated background */
-    .animated-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        overflow: hidden;
-    }
-    
-    .animated-bg span {
-        position: absolute;
-        display: block;
-        width: 20px;
-        height: 20px;
-        background: rgba(1, 255, 212, 0.05);
-        animation: move 3s linear infinite;
-        border-radius: 50%;
-    }
-    
-    @keyframes move {
-        0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 1;
-            border-radius: 50%;
-        }
-        100% {
-            transform: translateY(-1000px) rotate(720deg);
+        /* Animation utilities */
+        .fade-in {
             opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animated background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .animated-bg span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(1, 255, 212, 0.05);
+            animation: move 3s linear infinite;
             border-radius: 50%;
         }
-    }
-    
-    /* Typing animation */
-    .typing-text {
-        border-right: 3px solid #01ffd4;
-        white-space: nowrap;
-        overflow: hidden;
-        animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
-    }
-    
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 100% }
-    }
-    
-    @keyframes blink-caret {
-        from, to { border-color: transparent }
-        50% { border-color: #01ffd4 }
-    }
-    
-    /* Pulse animation for badge */
-    .badge {
-        animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(1, 255, 212, 0.4);
+        
+        @keyframes move {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 50%;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
         }
-        70% {
-            box-shadow: 0 0 0 10px rgba(1, 255, 212, 0);
+        
+        /* Typing animation */
+        .typing-text {
+            border-right: 3px solid #01ffd4;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
         }
-        100% {
-            box-shadow: 0 0 0 0 rgba(1, 255, 212, 0);
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
         }
-    }
-    
-    /* Smooth header transition */
-    header {
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    header.scrolled {
-        background-color: rgba(10, 10, 10, 0.95);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        border-bottom: 1px solid rgba(1, 255, 212, 0.05);
-    }
-    
-    /* Button animations */
-    .btn {
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-    }
-    
-    .btn:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.1);
-        z-index: -1;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.3s ease;
-    }
-    
-    .btn:hover:after {
-        transform: scaleX(1);
-        transform-origin: left;
-    }
-    
-    /* Floating animation for profile image */
-    .profile-img {
-        animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-        0% {
-            transform: translateY(0px);
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #01ffd4 }
         }
-        50% {
-            transform: translateY(-10px);
+        
+        /* Pulse animation for badge */
+        .badge {
+            animation: pulse 2s infinite;
         }
-        100% {
-            transform: translateY(0px);
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(1, 255, 212, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(1, 255, 212, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(1, 255, 212, 0);
+            }
         }
-    }
-    
-    /* Glow animation */
-    .glow {
-        animation: glow-pulse 8s ease-in-out infinite alternate;
-    }
-    
-    .glow-1 {
-        animation-delay: 0s;
-    }
-    
-    .glow-2 {
-        animation-delay: 4s;
-    }
-    
-    @keyframes glow-pulse {
-        0% {
-            opacity: 0.05;
-            transform: scale(1);
+        
+        /* Smooth header transition */
+        header {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
-        50% {
-            opacity: 0.15;
-            transform: scale(1.2);
+        
+        header.scrolled {
+            background-color: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(1, 255, 212, 0.05);
         }
-        100% {
-            opacity: 0.05;
-            transform: scale(1);
+        
+        /* Button animations */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-    }
+        
+        .btn:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover:after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* Floating animation for profile image */
+        .profile-img {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        /* Glow animation */
+        .glow {
+            animation: glow-pulse 8s ease-in-out infinite alternate;
+        }
+        
+        .glow-1 {
+            animation-delay: 0s;
+        }
+        
+        .glow-2 {
+            animation-delay: 4s;
+        }
+        
+        @keyframes glow-pulse {
+            0% {
+                opacity: 0.05;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.15;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 0.05;
+                transform: scale(1);
+            }
+        }
 
-    /* Icon pulse animation */
-    .pulse-icon {
-        animation: icon-pulse 2s infinite;
-    }
+        /* Icon pulse animation */
+        .pulse-icon {
+            animation: icon-pulse 2s infinite;
+        }
 
-    @keyframes icon-pulse {
-        0% {
-            transform: scale(1);
+        @keyframes icon-pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
-        50% {
-            transform: scale(1.1);
+
+        /* Mobile optimizations */
+        @media (max-width: 576px) {
+            /* Improve touch targets */
+            .btn, 
+            .tab-button,
+            .mobile-menu a {
+                min-height: 44px;
+            }
+
+            /* Improve spacing */
+            .section {
+                padding: 50px 0;
+            }
+
+            .project-content,
+            .service-card,
+            .skill-card,
+            .tool-card {
+                padding: 20px;
+            }
+
+            /* Improve readability */
+            .project-content h3,
+            .service-card h3,
+            .skill-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .project-content p,
+            .service-card p,
+            .skill-card p,
+            .tool-card p {
+                font-size: 0.95rem;
+            }
+
+            /* Fix footer on mobile */
+            footer {
+                padding: 30px 0;
+            }
         }
-        100% {
-            transform: scale(1);
+
+        /* Touch-friendly improvements */
+        @media (hover: none) {
+            .btn:active,
+            .project-card:active,
+            .service-card:active,
+            .skill-card:active,
+            .tool-card:active,
+            .tab-button:active {
+                transform: scale(0.98);
+            }
         }
-    }
     </style>
 </head>
 <body>
@@ -1143,7 +1373,7 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo"><span class="text-accent">Byte</span>0</a>
+            <a href="#" class="logo"><span class="text-accent">0</span>Byte</a>
             
             <nav>
                 <ul class="nav-links">
@@ -1328,65 +1558,123 @@
         <div class="container">
             <h2 class="section-title fade-in">Featured <span>Projects</span></h2>
             
-            <div class="projects-grid fade-in">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-img-container">
-                        <img src="images/Project1.png" alt="Project 1" class="project-img">
-                        <div class="project-overlay"></div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Website</h3>
-                        <p>Source code of this website.</p>
-                        <div class="project-tags">
-                            <span class="skill-tag tag-highlight">HTML</span>
-                            <span class="skill-tag tag-normal">CSS</span>
+            <div class="tab-navigation fade-in">
+                <div class="tab-nav">
+                    <button class="tab-button active" data-tab="all-projects">All Projects</button>
+                    <button class="tab-button" data-tab="web-projects">Web</button>
+                    <button class="tab-button" data-tab="security-projects">Security</button>
+                </div>
+            </div>
+            
+            <div class="tab-content active" id="all-projects">
+                <div class="projects-grid fade-in">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <div class="project-img-container">
+                            <img src="images/Project1.png" alt="Project 1" class="project-img">
+                            <div class="project-overlay"></div>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Byte0-0x/website" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        <div class="project-content">
+                            <h3>Website</h3>
+                            <p>Source code of this website.</p>
+                            <div class="project-tags">
+                                <span class="skill-tag tag-highlight">HTML</span>
+                                <span class="skill-tag tag-normal">CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Byte0-0x/website" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <div class="project-img-container">
+                            <img src="images/Project2.png" alt="Project 2" class="project-img">
+                            <div class="project-overlay"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Project 2</h3>
+                            <p>Soon.</p>
+                            <div class="project-tags">
+                                <span class="skill-tag tag-highlight">React</span>
+                                <span class="skill-tag tag-normal">Node.js</span>
+                                <span class="skill-tag tag-normal">MongoDB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <div class="project-img-container">
+                            <img src="images/Project3.png" alt="Project 3" class="project-img">
+                            <div class="project-overlay"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Project 3</h3>
+                            <p>Soon.</p>
+                            <div class="project-tags">
+                                <span class="skill-tag tag-highlight">React</span>
+                                <span class="skill-tag tag-normal">Node.js</span>
+                                <span class="skill-tag tag-normal">MongoDB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-img-container">
-                        <img src="images/Project2.png" alt="Project 2" class="project-img">
-                        <div class="project-overlay"></div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Project 2</h3>
-                        <p>Soon.</p>
-                        <div class="project-tags">
-                            <span class="skill-tag tag-highlight">React</span>
-                            <span class="skill-tag tag-normal">Node.js</span>
-                            <span class="skill-tag tag-normal">MongoDB</span>
+            </div>
+            
+            <div class="tab-content" id="web-projects">
+                <div class="projects-grid fade-in">
+                    <!-- Web Project 1 -->
+                    <div class="project-card">
+                        <div class="project-img-container">
+                            <img src="images/Project1.png" alt="Web Project 1" class="project-img">
+                            <div class="project-overlay"></div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        <div class="project-content">
+                            <h3>Website</h3>
+                            <p>Source code of this website.</p>
+                            <div class="project-tags">
+                                <span class="skill-tag tag-highlight">HTML</span>
+                                <span class="skill-tag tag-normal">CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Byte0-0x/website" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-img-container">
-                        <img src="images/Project3.png" alt="Project 3" class="project-img">
-                        <div class="project-overlay"></div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Project 3</h3>
-                        <p>Soon.</p>
-                        <div class="project-tags">
-                            <span class="skill-tag tag-highlight">React</span>
-                            <span class="skill-tag tag-normal">Node.js</span>
-                            <span class="skill-tag tag-normal">MongoDB</span>
+            </div>
+            
+            <div class="tab-content" id="security-projects">
+                <div class="projects-grid fade-in">
+                    <!-- Security Project 1 -->
+                    <div class="project-card">
+                        <div class="project-img-container">
+                            <img src="images/Project2.png" alt="Security Project 1" class="project-img">
+                            <div class="project-overlay"></div>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        <div class="project-content">
+                            <h3>Security Tool</h3>
+                            <p>A custom security testing tool.</p>
+                            <div class="project-tags">
+                                <span class="skill-tag tag-highlight">Python</span>
+                                <span class="skill-tag tag-normal">Security</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1399,74 +1687,148 @@
     </section>
 
     <!-- Tools Section -->
-    <section class="section" id="tools">
+    <section class="section tools-section" id="tools">
         <div class="glow glow-3"></div>
         <div class="container">
             <h2 class="section-title fade-in">Favorite <span>Tools</span></h2>
             
-            <div class="tools-grid fade-in">
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>Wireshark</h3>
-                    <p>Network protocol analyzer</p>
+            <div class="tab-navigation fade-in">
+                <div class="tab-nav">
+                    <button class="tab-button active" data-tab="all-tools">All Tools</button>
+                    <button class="tab-button" data-tab="network-tools">Network</button>
+                    <button class="tab-button" data-tab="security-tools">Security</button>
                 </div>
-                
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="fas fa-search"></i>
+            </div>
+            
+            <div class="tab-content active" id="all-tools">
+                <div class="tools-grid fade-in">
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Wireshark</h3>
+                        <p>Network protocol analyzer</p>
                     </div>
-                    <h3>Nmap</h3>
-                    <p>Network discovery tool</p>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Nmap</h3>
+                        <p>Network discovery tool</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h3>Hashcat</h3>
+                        <p>Password recovery tool</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>Aircrack-ng</h3>
+                        <p>Wireless security suite</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h3>Metasploit</h3>
+                        <p>Penetration testing framework</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-spider"></i>
+                        </div>
+                        <h3>Burp Suite</h3>
+                        <p>Web vulnerability scanner</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <h3>Kali Linux</h3>
+                        <p>Security-focused OS</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-lock-open"></i>
+                        </div>
+                        <h3>John the Ripper</h3>
+                        <p>Password cracker</p>
+                    </div>
                 </div>
-                
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="fas fa-key"></i>
+            </div>
+            
+            <div class="tab-content" id="network-tools">
+                <div class="tools-grid fade-in">
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Wireshark</h3>
+                        <p>Network protocol analyzer</p>
                     </div>
-                    <h3>Hashcat</h3>
-                    <p>Password recovery tool</p>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Nmap</h3>
+                        <p>Network discovery tool</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>Aircrack-ng</h3>
+                        <p>Wireless security suite</p>
+                    </div>
                 </div>
-                
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="fas fa-wifi"></i>
+            </div>
+            
+            <div class="tab-content" id="security-tools">
+                <div class="tools-grid fade-in">
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h3>Metasploit</h3>
+                        <p>Penetration testing framework</p>
                     </div>
-                    <h3>Aircrack-ng</h3>
-                    <p>Wireless security suite</p>
-                </div>
-                
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="fas fa-bug"></i>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h3>Hashcat</h3>
+                        <p>Password recovery tool</p>
                     </div>
-                    <h3>Metasploit</h3>
-                    <p>Penetration testing framework</p>
-                </div>
-                
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="fas fa-spider"></i>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-lock-open"></i>
+                        </div>
+                        <h3>John the Ripper</h3>
+                        <p>Password cracker</p>
                     </div>
-                    <h3>Burp Suite</h3>
-                    <p>Web vulnerability scanner</p>
-                </div>
-                
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="fas fa-terminal"></i>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <h3>Kali Linux</h3>
+                        <p>Security-focused OS</p>
                     </div>
-                    <h3>Kali Linux</h3>
-                    <p>Security-focused OS</p>
-                </div>
-                
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="fas fa-lock-open"></i>
-                    </div>
-                    <h3>John the Ripper</h3>
-                    <p>Password cracker</p>
                 </div>
             </div>
         </div>
@@ -1652,6 +2014,39 @@
             }, { threshold: 0.5 });
             
             counterObserver.observe(counter);
+        });
+        
+        // Tab navigation for projects and tools
+        const tabButtons = document.querySelectorAll('.tab-button');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Get the tab ID from the data-tab attribute
+                const tabId = button.getAttribute('data-tab');
+                
+                // Get all tab buttons in the same group
+                const tabGroup = button.closest('.tab-nav');
+                const groupButtons = tabGroup.querySelectorAll('.tab-button');
+                
+                // Remove active class from all buttons in the group
+                groupButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to the clicked button
+                button.classList.add('active');
+                
+                // Get all tab content elements
+                const tabContents = button.closest('.container').querySelectorAll('.tab-content');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show the selected tab content
+                document.getElementById(tabId).classList.add('active');
+            });
         });
     </script>
 </body>
