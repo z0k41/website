@@ -378,67 +378,6 @@
             margin-top: 40px;
         }
 
-        /* Contact section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .contact-info p {
-            color: #aaaaaa;
-            margin-bottom: 30px;
-        }
-
-        .contact-method {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .contact-method i {
-            color: #01ffd4;
-            margin-right: 15px;
-            font-size: 1.2rem;
-        }
-
-        .contact-form .form-group {
-            margin-bottom: 20px;
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            background-color: #191919;
-            border: 1px solid #222222;
-            border-radius: 4px;
-            color: #ffffff;
-            font-family: inherit;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: #01ffd4;
-        }
-
-        .contact-form textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
         /* Footer */
         footer {
             border-top: 1px solid #222222;
@@ -488,11 +427,175 @@
             right: 20%;
         }
 
+        /* Services section */
+        .services {
+            background-color: rgba(25, 25, 25, 0.5);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #191919;
+            border: 1px solid #222222;
+            border-radius: 8px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(1, 255, 212, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: #01ffd4;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: #01ffd4;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #aaaaaa;
+        }
+
+        /* Tools section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-card {
+            background-color: #191919;
+            border: 1px solid #222222;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(1, 255, 212, 0.1);
+        }
+
+        .tool-icon {
+            font-size: 2rem;
+            color: #01ffd4;
+            margin-bottom: 15px;
+        }
+
+        .tool-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            color: #aaaaaa;
+            font-size: 0.9rem;
+        }
+
+        /* Blog section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background-color: #191919;
+            border: 1px solid #222222;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(1, 255, 212, 0.1);
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-date {
+            font-size: 0.8rem;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .blog-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .blog-card p {
+            color: #aaaaaa;
+            margin-bottom: 15px;
+        }
+
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: #01ffd4;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .read-more i {
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover i {
+            transform: translateX(3px);
+        }
+
         /* Responsive styles */
         @media (max-width: 992px) {
             .hero-content,
-            .about-content,
-            .contact-content {
+            .about-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
@@ -611,7 +714,7 @@
         0% {
             transform: translateY(0) rotate(0deg);
             opacity: 1;
-            border-radius: 0;
+            border-radius: 50%;
         }
         100% {
             transform: translateY(-1000px) rotate(720deg);
@@ -691,18 +794,6 @@
         transform-origin: left;
     }
     
-    /* Form input animations */
-    .contact-form input,
-    .contact-form textarea {
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-        border-color: #01ffd4;
-        box-shadow: 0 0 0 3px rgba(1, 255, 212, 0.1);
-    }
-    
     /* Floating animation for profile image */
     .profile-img {
         animation: float 6s ease-in-out infinite;
@@ -747,6 +838,36 @@
             transform: scale(1);
         }
     }
+
+    /* Number counter animation */
+    .counter-value {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #01ffd4;
+        margin-bottom: 10px;
+    }
+
+    .counter-label {
+        color: #aaaaaa;
+        font-size: 1.1rem;
+    }
+
+    /* Icon pulse animation */
+    .pulse-icon {
+        animation: icon-pulse 2s infinite;
+    }
+
+    @keyframes icon-pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
     </style>
 </head>
 <body>
@@ -770,8 +891,10 @@
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
+                    <li><a href="#services">Services</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#blog">Blog</a></li>
                 </ul>
             </nav>
             
@@ -788,8 +911,10 @@
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#blog">Blog</a></li>
             </ul>
             
             <div class="mobile-social">
@@ -811,7 +936,7 @@
                     <p>A passionate PenTester specializing in coding, operating systems, and networking.</p>
                     
                     <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">Contact Me <i class="fas fa-arrow-right"></i></a>
+                        <a href="#services" class="btn btn-primary">My Services <i class="fas fa-arrow-right"></i></a>
                         <a href="https://github.com/Byte0-0x" class="btn btn-outline">See My Work</a>
                     </div>
                 </div>
@@ -898,6 +1023,47 @@
         </div>
     </section>
 
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">My <span>Services</span></h2>
+            
+            <div class="services-grid fade-in">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt pulse-icon"></i>
+                    </div>
+                    <h3>Network Security</h3>
+                    <p>Comprehensive network security assessments to identify vulnerabilities in your infrastructure. Includes firewall testing, port scanning, and network traffic analysis.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code pulse-icon"></i>
+                    </div>
+                    <h3>Web Application Testing</h3>
+                    <p>Thorough testing of web applications to identify security flaws including SQL injection, XSS vulnerabilities, and authentication weaknesses.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt pulse-icon"></i>
+                    </div>
+                    <h3>Mobile App Security</h3>
+                    <p>Security assessment of mobile applications on iOS and Android platforms to identify data leakage, insecure storage, and API vulnerabilities.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-server pulse-icon"></i>
+                    </div>
+                    <h3>Infrastructure Testing</h3>
+                    <p>Comprehensive security testing of servers, cloud infrastructure, and containerized environments to identify misconfigurations and vulnerabilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section class="section projects" id="projects">
         <div class="container">
@@ -964,41 +1130,151 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
+    <!-- Tools Section -->
+    <section class="section" id="tools">
         <div class="container">
-            <h2 class="section-title fade-in">Get In <span>Touch</span></h2>
+            <h2 class="section-title fade-in">Favorite <span>Tools</span></h2>
             
-            <div class="contact-content fade-in">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>Feel free to reach out if you're looking for a PenTester, have a question, or just want to chat.</p>
-                    
-                    <div class="contact-method">
-                        <i class="fab fa-github"></i>
-                        <a href="https://github.com/Byte0-0x">Github</a>
+            <div class="tools-grid fade-in">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Wireshark</h3>
+                    <p>Network protocol analyzer</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Nmap</h3>
+                    <p>Network discovery tool</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Hashcat</h3>
+                    <p>Password recovery tool</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Aircrack-ng</h3>
+                    <p>Wireless security suite</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Metasploit</h3>
+                    <p>Penetration testing framework</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-spider"></i>
+                    </div>
+                    <h3>Burp Suite</h3>
+                    <p>Web vulnerability scanner</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>Kali Linux</h3>
+                    <p>Security-focused OS</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-lock-open"></i>
+                    </div>
+                    <h3>John the Ripper</h3>
+                    <p>Password cracker</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="section blog" id="blog">
+        <div class="container">
+            <h2 class="section-title fade-in">Latest <span>Articles</span></h2>
+            
+            <div class="blog-grid fade-in">
+                <div class="blog-card">
+                    <img src="images/Project1.png" alt="Blog Post 1" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">April 15, 2025</div>
+                        <h3>Common Network Vulnerabilities and How to Fix Them</h3>
+                        <p>A comprehensive guide to identifying and patching the most common network security issues.</p>
+                        <div class="blog-tags">
+                            <span class="skill-tag tag-highlight">Security</span>
+                            <span class="skill-tag tag-normal">Networking</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" placeholder="Your name">
+                <div class="blog-card">
+                    <img src="images/Project2.png" alt="Blog Post 2" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">March 28, 2025</div>
+                        <h3>Securing Your Home Network: A Step-by-Step Guide</h3>
+                        <p>Learn how to protect your home network from common threats with these simple steps.</p>
+                        <div class="blog-tags">
+                            <span class="skill-tag tag-highlight">Home Security</span>
+                            <span class="skill-tag tag-normal">WiFi</span>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="Your email">
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <img src="images/Project3.png" alt="Blog Post 3" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">February 10, 2025</div>
+                        <h3>The Rise of AI in Cybersecurity: Threat or Opportunity?</h3>
+                        <p>Exploring how artificial intelligence is changing the landscape of cybersecurity.</p>
+                        <div class="blog-tags">
+                            <span class="skill-tag tag-highlight">AI</span>
+                            <span class="skill-tag tag-normal">Cybersecurity</span>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" placeholder="Your message"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section services">
+        <div class="container">
+            <div class="fade-in">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center;">
+                    <div>
+                        <div class="counter-value" data-count="50">0</div>
+                        <div class="counter-label">Projects Completed</div>
+                    </div>
+                    <div>
+                        <div class="counter-value" data-count="100">0</div>
+                        <div class="counter-label">Vulnerabilities Found</div>
+                    </div>
+                    <div>
+                        <div class="counter-value" data-count="25">0</div>
+                        <div class="counter-label">Happy Clients</div>
+                    </div>
+                    <div>
+                        <div class="counter-value" data-count="5">0</div>
+                        <div class="counter-label">Years Experience</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1052,14 +1328,6 @@
         
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Form submission (prevent default for demo)
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Form submission functionality would go here in a real application.');
-            contactForm.reset();
-        });
         
         // Scroll animations
         const fadeElements = document.querySelectorAll('.fade-in');
@@ -1132,6 +1400,40 @@
                     });
                 }
             });
+        });
+        
+        // Counter animation
+        const counters = document.querySelectorAll('.counter-value');
+        
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-count'));
+            const duration = 2000; // 2 seconds
+            const step = Math.ceil(target / (duration / 30)); // Update every 30ms
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += step;
+                if (current > target) {
+                    current = target;
+                }
+                counter.textContent = current;
+                
+                if (current < target) {
+                    setTimeout(updateCounter, 30);
+                }
+            };
+            
+            // Start counter animation when element is in view
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateCounter();
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counterObserver.observe(counter);
         });
     </script>
 </body>
