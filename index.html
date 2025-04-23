@@ -87,6 +87,7 @@
             position: relative;
         }
 
+        /* Update the section-title class to ensure it's properly centered */
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 60px;
@@ -365,18 +366,21 @@
             gap: 60px;
         }
 
-        .about-text h3 {
+        /* Center the about section headers */
+        .about-text h3, .about-timeline h3 {
             font-size: 1.8rem;
             margin-bottom: 20px;
             position: relative;
-            display: inline-block;
+            display: block;
+            text-align: center;
         }
 
-        .about-text h3::after {
+        .about-text h3::after, .about-timeline h3::after {
             content: '';
             position: absolute;
             bottom: -8px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 40px;
             height: 3px;
             background-color: #01ffd4;
@@ -423,10 +427,12 @@
             transform: scaleY(1);
         }
 
+        /* Center the timeline item headers */
         .timeline-item h4 {
             color: #01ffd4;
             margin-bottom: 8px;
             font-size: 1.2rem;
+            text-align: center;
         }
 
         .timeline-item .date {
@@ -436,14 +442,12 @@
             display: flex;
             align-items: center;
             gap: 6px;
-        }
-
-        .timeline-item .date i {
-            font-size: 0.8rem;
+            justify-content: center;
         }
 
         .timeline-item p {
             color: rgba(255, 255, 255, 0.7);
+            text-align: center;
         }
 
         /* Skills section */
@@ -486,11 +490,13 @@
             transform: scaleX(1);
         }
 
+        /* Center the headers in skill cards */
         .skill-card h3 {
             font-size: 1.5rem;
             margin-bottom: 20px;
             position: relative;
-            display: inline-block;
+            display: block;
+            text-align: center;
         }
 
         .skill-tags {
@@ -588,23 +594,29 @@
             position: relative;
         }
 
+        /* Center the headers in project cards */
         .project-content h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
             font-weight: 600;
             color: #01ffd4;
+            text-align: center;
         }
 
+        /* Center the project content text */
         .project-content p {
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 15px;
+            text-align: center;
         }
 
+        /* Center the project tags */
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-bottom: 20px;
+            justify-content: center;
         }
 
         .project-links {
@@ -667,31 +679,22 @@
             transform: scaleY(1);
         }
 
+        /* Center the service icon */
         .service-icon {
             font-size: 2.5rem;
             color: #01ffd4;
             margin-bottom: 20px;
             position: relative;
-            display: inline-block;
+            display: block;
+            text-align: center;
         }
 
-        .service-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background-color: rgba(1, 255, 212, 0.1);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
+        /* Center the headers in service cards */
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
             font-weight: 600;
+            text-align: center;
         }
 
         .service-card p {
