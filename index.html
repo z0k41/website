@@ -554,9 +554,213 @@
                 padding: 60px 0;
             }
         }
+
+    /* Animation utilities */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Hover animations */
+    .skill-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(1, 255, 212, 0.1);
+    }
+    
+    .project-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(1, 255, 212, 0.1);
+    }
+    
+    /* Animated background */
+    .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        overflow: hidden;
+    }
+    
+    .animated-bg span {
+        position: absolute;
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: rgba(1, 255, 212, 0.05);
+        animation: move 3s linear infinite;
+        border-radius: 50%;
+    }
+    
+    @keyframes move {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+            border-radius: 0;
+        }
+        100% {
+            transform: translateY(-1000px) rotate(720deg);
+            opacity: 0;
+            border-radius: 50%;
+        }
+    }
+    
+    /* Typing animation */
+    .typing-text {
+        border-right: 3px solid #01ffd4;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+    }
+    
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: #01ffd4 }
+    }
+    
+    /* Pulse animation for badge */
+    .badge {
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(1, 255, 212, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(1, 255, 212, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(1, 255, 212, 0);
+        }
+    }
+    
+    /* Smooth header transition */
+    header {
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    header.scrolled {
+        background-color: rgba(15, 15, 15, 0.95);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Button animations */
+    .btn {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .btn:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.1);
+        z-index: -1;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+    }
+    
+    .btn:hover:after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+    
+    /* Form input animations */
+    .contact-form input,
+    .contact-form textarea {
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        border-color: #01ffd4;
+        box-shadow: 0 0 0 3px rgba(1, 255, 212, 0.1);
+    }
+    
+    /* Floating animation for profile image */
+    .profile-img {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    
+    /* Glow animation */
+    .glow {
+        animation: glow-pulse 8s ease-in-out infinite alternate;
+    }
+    
+    .glow-1 {
+        animation-delay: 0s;
+    }
+    
+    .glow-2 {
+        animation-delay: 4s;
+    }
+    
+    @keyframes glow-pulse {
+        0% {
+            opacity: 0.05;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.15;
+            transform: scale(1.2);
+        }
+        100% {
+            opacity: 0.05;
+            transform: scale(1);
+        }
+    }
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <span style="top:80%; left:20%; animation-delay: 0s; animation-duration: 8s;"></span>
+        <span style="top:70%; left:50%; animation-delay: 2s; animation-duration: 12s;"></span>
+        <span style="top:10%; left:70%; animation-delay: 4s; animation-duration: 10s;"></span>
+        <span style="top:40%; left:25%; animation-delay: 6s; animation-duration: 14s;"></span>
+        <span style="top:60%; left:80%; animation-delay: 8s; animation-duration: 9s;"></span>
+        <span style="top:90%; left:10%; animation-delay: 10s; animation-duration: 11s;"></span>
+        <span style="top:20%; left:30%; animation-delay: 12s; animation-duration: 13s;"></span>
+        <span style="top:30%; left:60%; animation-delay: 14s; animation-duration: 15s;"></span>
+    </div>
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -603,7 +807,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <span class="badge">Available</span>
-                    <h1>Hi, I'm <span class="text-red">Byte0</span></h1>
+                    <h1><span class="typing-text">Hi, I'm <span class="text-red">Byte0</span></span></h1>
                     <p>A passionate PenTester specializing in coding, operating systems, and networking.</p>
                     
                     <div class="hero-buttons">
@@ -622,9 +826,9 @@
     <!-- About Section -->
     <section class="section about" id="about">
         <div class="container">
-            <h2 class="section-title">Who am <span>I</span></h2>
+            <h2 class="section-title fade-in">Who am <span>I</span></h2>
             
-            <div class="about-content">
+            <div class="about-content fade-in">
                 <div class="about-text">
                     <h3>My Story</h3>
                     <p>I'm a PenTester with 1 year of experience. I specialize in Coding, Operating Systems and Networking.</p>
@@ -659,9 +863,9 @@
     <!-- Skills Section -->
     <section class="section skills" id="skills">
         <div class="container">
-            <h2 class="section-title">My <span>Skills</span></h2>
+            <h2 class="section-title fade-in">My <span>Skills</span></h2>
             
-            <div class="skills-content">
+            <div class="skills-content fade-in">
                 <div class="skill-card">
                     <h3>Coding</h3>
                     <div class="skill-tags">
@@ -697,9 +901,9 @@
     <!-- Projects Section -->
     <section class="section projects" id="projects">
         <div class="container">
-            <h2 class="section-title">Featured <span>Projects</span></h2>
+            <h2 class="section-title fade-in">Featured <span>Projects</span></h2>
             
-            <div class="projects-grid">
+            <div class="projects-grid fade-in">
                 <!-- Project 1 -->
                 <div class="project-card">
                     <img src="images/Project1.png" alt="Project 1" class="project-img">
@@ -763,9 +967,9 @@
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <h2 class="section-title fade-in">Get In <span>Touch</span></h2>
             
-            <div class="contact-content">
+            <div class="contact-content fade-in">
                 <div class="contact-info">
                     <h3>Contact Information</h3>
                     <p>Feel free to reach out if you're looking for a PenTester, have a question, or just want to chat.</p>
@@ -855,6 +1059,79 @@
             e.preventDefault();
             alert('Form submission functionality would go here in a real application.');
             contactForm.reset();
+        });
+        
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        // Intersection Observer for fade-in elements
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Animated background
+        function createParticles() {
+            const animatedBg = document.querySelector('.animated-bg');
+            const numberOfParticles = 15;
+            
+            for (let i = 0; i < numberOfParticles; i++) {
+                const particle = document.createElement('span');
+                
+                // Random position, size and animation duration
+                const size = Math.random() * 15 + 5;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 10;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.top = `${posY}%`;
+                particle.style.left = `${posX}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                animatedBg.appendChild(particle);
+            }
+        }
+        
+        // Initialize particles
+        createParticles();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // Adjust for header height
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
     </script>
 </body>
