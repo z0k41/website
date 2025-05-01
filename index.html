@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Byte0 | PenTester Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
@@ -12,6 +12,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            position: relative;
+            width: 100%;
         }
 
         html {
@@ -24,7 +30,6 @@
             background-color: #0a0a0a;
             color: #ffffff;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         a {
@@ -38,10 +43,11 @@
         }
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            box-sizing: border-box;
         }
 
         .btn {
@@ -107,6 +113,8 @@
         .section {
             padding: 100px 0;
             position: relative;
+            width: 100%;
+            overflow: hidden;
         }
 
         /* Section title - centered for all devices */
@@ -439,6 +447,7 @@
             align-items: center;
             padding-top: 70px;
             overflow: hidden;
+            width: 100%;
         }
 
         .hero-content {
@@ -446,6 +455,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
+            width: 100%;
         }
 
         .hero-text h1 {
