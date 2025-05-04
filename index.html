@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none; /* Hide default cursor */
         }
 
         html, body {
@@ -57,7 +58,7 @@
             padding: 12px 28px;
             border-radius: 8px;
             font-weight: 600;
-            cursor: pointer;
+            cursor: none; /* Use custom cursor */
             transition: all 0.3s ease;
             gap: 8px;
             letter-spacing: 0.3px;
@@ -83,6 +84,24 @@
             left: 0;
         }
 
+        /* Button hover effect */
+        .btn::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(1, 255, 212, 0.3);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
         .btn-primary {
             background-color: #01ffd4;
             color: #0a0a0a;
@@ -93,7 +112,7 @@
         .btn-primary:hover {
             background-color: #00e6be;
             color: #0a0a0a;
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.03);
             box-shadow: 0 6px 20px rgba(1, 255, 212, 0.3);
         }
 
@@ -107,7 +126,7 @@
         .btn-outline:hover {
             background-color: rgba(255, 255, 255, 0.05);
             border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.03);
         }
 
         .section {
@@ -146,6 +165,40 @@
 
         .text-accent {
             color: #01ffd4;
+        }
+
+        /* Custom cursor styles */
+        .cursor-dot,
+        .cursor-outline {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #01ffd4;
+            box-shadow: 0 0 10px rgba(1, 255, 212, 0.8);
+            transition: transform 0.1s ease;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(1, 255, 212, 0.5);
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+
+        .cursor-hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: rgba(1, 255, 212, 0.1);
+            border-color: rgba(1, 255, 212, 0.2);
         }
 
         /* Loading Screen */
@@ -267,7 +320,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(1, 255, 212, 0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(1, 255, 212, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -438,7 +491,8 @@
         }
 
         .social-links a:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px) rotate(360deg);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
         .menu-btn {
@@ -447,7 +501,7 @@
             border: none;
             color: #ffffff;
             font-size: 1.5rem;
-            cursor: pointer;
+            cursor: none; /* Use custom cursor */
         }
 
         /* Mobile menu - hidden by default */
@@ -530,7 +584,8 @@
 
         .mobile-social a:hover {
             background-color: rgba(1, 255, 212, 0.1);
-            transform: translateY(-2px);
+            transform: translateY(-2px) rotate(360deg);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
         /* Hero section */
@@ -792,7 +847,7 @@
         }
 
         .timeline-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.03);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-color: rgba(1, 255, 212, 0.1);
         }
@@ -865,7 +920,7 @@
         }
 
         .skill-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.03);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-color: rgba(1, 255, 212, 0.1);
         }
@@ -901,6 +956,8 @@
         .tag-highlight {
             background-color: rgba(1, 255, 212, 0.1);
             color: #01ffd4;
+            border: 1px solid rgba(1, 255, 212, 0.255,212,0.1);
+            color: #01ffd4;
             border: 1px solid rgba(1, 255, 212, 0.2);
         }
 
@@ -911,7 +968,7 @@
         }
 
         .skill-tag:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.05);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
@@ -958,7 +1015,7 @@
         .project-card:nth-child(3).animate { animation-delay: 0.5s; }
 
         .project-card:hover {
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(-5px) scale(1.03);
             box-shadow: 0 10px 30px rgba(1, 255, 212, 0.1);
             border-color: rgba(1, 255, 212, 0.2);
         }
@@ -1094,7 +1151,7 @@
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.03);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-color: rgba(1, 255, 212, 0.1);
         }
@@ -1168,7 +1225,7 @@
         .tool-card:nth-child(8).animate { animation-delay: 0.4s; }
 
         .tool-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.05);
             box-shadow: 0 10px 30px rgba(1, 255, 212, 0.1);
             border-color: rgba(1, 255, 212, 0.2);
             background-color: rgba(1, 255, 212, 0.03);
@@ -1271,7 +1328,8 @@
 
         .footer-social a:hover {
             color: #01ffd4;
-            transform: translateY(-2px);
+            transform: translateY(-2px) rotate(360deg);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
         /* Glow effects */
@@ -1352,7 +1410,7 @@
         .stat-item:nth-child(4).animate { animation-delay: 0.4s; }
 
         .stat-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.03);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-color: rgba(1, 255, 212, 0.1);
         }
@@ -1409,7 +1467,7 @@
             background: transparent;
             color: rgba(255, 255, 255, 0.7);
             font-weight: 500;
-            cursor: pointer;
+            cursor: none; /* Use custom cursor */
             transition: all 0.3s ease;
             font-size: 0.95rem;
             min-height: 44px; /* Improve touch targets */
@@ -1471,7 +1529,7 @@
             overflow: hidden;
             pointer-events: none;
         }
-        
+
         .animated-bg span {
             position: absolute;
             display: block;
@@ -1482,7 +1540,7 @@
             border-radius: 50%;
             bottom: -30px; /* Start below the viewport */
         }
-        
+
         @keyframes move {
             0% {
                 transform: translateY(0) rotate(0deg);
@@ -1495,7 +1553,7 @@
                 border-radius: 50%;
             }
         }
-        
+
         /* Typing animation */
         .typing-text {
             border-right: 3px solid #01ffd4;
@@ -1503,12 +1561,12 @@
             overflow: hidden;
             animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
         }
-        
+
         @keyframes typing {
             from { width: 0 }
             to { width: 100% }
         }
-        
+
         @keyframes blink-caret {
             from, to { border-color: transparent }
             50% { border-color: #01ffd4 }
@@ -1531,6 +1589,58 @@
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* New animations and effects */
+        .hover-float {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-float:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 15px rgba(1, 255, 212, 0.5);
+        }
+        
+        .rotate-on-hover:hover {
+            animation: rotate360 1s ease;
+        }
+        
+        @keyframes rotate360 {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .pulse-animation {
+            animation: pulse-element 2s infinite;
+        }
+        
+        @keyframes pulse-element {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .shake-animation:hover {
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+        
+        .bounce-animation {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
         }
 
         /* Responsive styles */
@@ -1557,13 +1667,21 @@
             .section {
                 padding: 80px 0;
             }
-            
+
             .tools-grid {
                 grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
             }
 
             .section-title {
                 font-size: 2.2rem;
+            }
+            
+            .cursor-dot, .cursor-outline {
+                display: none; /* Hide custom cursor on touch devices */
+            }
+            
+            * {
+                cursor: auto !important; /* Restore default cursor on touch devices */
             }
         }
 
@@ -1586,29 +1704,29 @@
                 text-align: center;
                 gap: 20px;
             }
-            
+
             .projects-grid,
             .services-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .tools-grid {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
                 gap: 15px;
             }
-            
+
             .tool-card {
                 padding: 20px 15px;
             }
-            
+
             .tool-icon {
                 font-size: 1.8rem;
             }
-            
+
             .tool-card h3 {
                 font-size: 1rem;
             }
-            
+
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
@@ -1652,24 +1770,24 @@
             .section-title {
                 font-size: 1.8rem;
             }
-            
+
             .tools-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .counter-value {
                 font-size: 2.5rem;
             }
-            
+
             .counter-label {
                 font-size: 0.9rem;
             }
-            
+
             .project-links {
                 flex-direction: column;
                 gap: 10px;
             }
-            
+
             .project-links .btn {
                 width: 100%;
             }
@@ -1735,6 +1853,10 @@
     </style>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-grid"></div>
@@ -1751,12 +1873,12 @@
     <div class="animated-bg" id="animatedBg">
         <!-- Particles will be added by JavaScript -->
     </div>
-    
+
     <!-- Header -->
     <header>
         <div class="container header-container">
             <a href="#" class="logo">Byte<span class="text-accent">0</span></a>
-            
+
             <nav>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
@@ -1766,16 +1888,16 @@
                     <li><a href="#tools">Tools</a></li>
                 </ul>
             </nav>
-            
+
             <div class="social-links">
                 <a href="https://github.com/Byte0-0x" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
             </div>
-            
+
             <button class="menu-btn" id="menuBtn">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        
+
         <div class="mobile-menu" id="mobileMenu">
             <ul>
                 <li><a href="#about">About</a></li>
@@ -1784,7 +1906,7 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#tools">Tools</a></li>
             </ul>
-            
+
             <div class="mobile-social">
                 <a href="https://github.com/Byte0-0x" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
             </div>
@@ -1795,20 +1917,20 @@
     <section class="hero" id="home">
         <div class="glow glow-1"></div>
         <div class="glow glow-2"></div>
-        
+
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
                     <span class="badge"><i class="fas fa-circle"></i> Available for hire</span>
                     <h1><span class="typing-text">Hi, I'm <span class="text-accent">Byte0</span></span></h1>
                     <p>A passionate PenTester specializing in coding, operating systems, and networking.</p>
-                    
+
                     <div class="hero-buttons">
                         <a href="#services" class="btn btn-primary">My Services <i class="fas fa-arrow-right"></i></a>
                         <a href="https://github.com/Byte0-0x" class="btn btn-outline" target="_blank" rel="noopener noreferrer">See My Work <i class="fab fa-github"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="hero-image">
                     <img src="images/Byte0.png" alt="Byte0" class="profile-img">
                 </div>
@@ -1821,29 +1943,29 @@
         <div class="glow glow-3"></div>
         <div class="container">
             <h2 class="section-title reveal">Who am <span>I</span></h2>
-            
+
             <div class="about-content">
                 <div class="about-text reveal">
                     <h3>My Story</h3>
                     <p>I'm a PenTester with 1 year of experience. I specialize in Coding, Operating Systems and Networking.</p>
                     <p>When I'm not coding, you can find me hiking, reading, or experimenting.</p>
                 </div>
-                
+
                 <div class="about-timeline">
                     <h3 class="reveal">Education & Experience</h3>
-                    
+
                     <div class="timeline-item">
                         <h4>Networking</h4>
                         <div class="date"><i class="far fa-calendar-alt"></i> 2025 - Present</div>
                         <p>Learned Wireshark, Nmap and other networking tools</p>
                     </div>
-                    
+
                     <div class="timeline-item">
                         <h4>Linux</h4>
                         <div class="date"><i class="far fa-calendar-alt"></i> 2024 - 2025</div>
                         <p>Learned a lot about Linux filesystems and commands</p>
                     </div>
-                    
+
                     <div class="timeline-item">
                         <h4>Cracking Passwords</h4>
                         <div class="date"><i class="far fa-calendar-alt"></i> 2025 - Present</div>
@@ -1858,7 +1980,7 @@
     <section class="section skills" id="skills">
         <div class="container">
             <h2 class="section-title reveal">My <span>Skills</span></h2>
-            
+
             <div class="skills-content">
                 <div class="skill-card">
                     <h3>Coding</h3>
@@ -1869,7 +1991,7 @@
                         <span class="skill-tag tag-normal">HTML/CSS</span>
                     </div>
                 </div>
-                
+
                 <div class="skill-card">
                     <h3>PenTesting</h3>
                     <div class="skill-tags">
@@ -1879,7 +2001,7 @@
                         <span class="skill-tag tag-normal">Wifite</span>
                     </div>
                 </div>
-                
+
                 <div class="skill-card">
                     <h3>Tools & Others</h3>
                     <div class="skill-tags">
@@ -1897,7 +2019,7 @@
         <div class="glow glow-2"></div>
         <div class="container">
             <h2 class="section-title reveal">My <span>Services</span></h2>
-            
+
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
@@ -1906,7 +2028,7 @@
                     <h3>Network Security</h3>
                     <p>Comprehensive network security assessments to identify vulnerabilities in your infrastructure. Includes firewall testing, port scanning, and network traffic analysis.</p>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-laptop-code"></i>
@@ -1914,7 +2036,7 @@
                     <h3>Web Application Testing</h3>
                     <p>Thorough testing of web applications to identify security flaws including SQL injection, XSS vulnerabilities, and authentication weaknesses.</p>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-mobile-alt"></i>
@@ -1922,7 +2044,7 @@
                     <h3>Mobile App Security</h3>
                     <p>Security assessment of mobile applications on iOS and Android platforms to identify data leakage, insecure storage, and API vulnerabilities.</p>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-server"></i>
@@ -1939,7 +2061,7 @@
         <div class="glow glow-1"></div>
         <div class="container">
             <h2 class="section-title reveal">Featured <span>Projects</span></h2>
-            
+
             <div class="tab-navigation">
                 <div class="tab-nav">
                     <button class="tab-button active" data-tab="all-projects">All Projects</button>
@@ -1947,7 +2069,7 @@
                     <button class="tab-button" data-tab="security-projects">Security</button>
                 </div>
             </div>
-            
+
             <div class="tab-content active" id="all-projects">
                 <div class="projects-grid">
                     <!-- Project 1 -->
@@ -1969,7 +2091,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Project 2 -->
                     <div class="project-card">
                         <div class="project-img-container">
@@ -1990,7 +2112,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Project 3 -->
                     <div class="project-card">
                         <div class="project-img-container">
@@ -2013,7 +2135,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="tab-content" id="web-projects">
                 <div class="projects-grid">
                     <!-- Web Project 1 -->
@@ -2037,7 +2159,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="tab-content" id="security-projects">
                 <div class="projects-grid">
                     <!-- Security Project 1 -->
@@ -2061,7 +2183,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="view-all">
                 <a href="https://github.com/Byte0-0x" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View All Projects <i class="fas fa-arrow-right"></i></a>
             </div>
@@ -2073,7 +2195,7 @@
         <div class="glow glow-3"></div>
         <div class="container">
             <h2 class="section-title reveal">Favorite <span>Tools</span></h2>
-            
+
             <div class="tab-navigation">
                 <div class="tab-nav">
                     <button class="tab-button active" data-tab="all-tools">All Tools</button>
@@ -2081,7 +2203,7 @@
                     <button class="tab-button" data-tab="security-tools">Security</button>
                 </div>
             </div>
-            
+
             <div class="tab-content active" id="all-tools">
                 <div class="tools-grid">
                     <div class="tool-card">
@@ -2091,7 +2213,7 @@
                         <h3>Wireshark</h3>
                         <p>Network protocol analyzer</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-search"></i>
@@ -2099,7 +2221,7 @@
                         <h3>Nmap</h3>
                         <p>Network discovery tool</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-key"></i>
@@ -2107,7 +2229,7 @@
                         <h3>Hashcat</h3>
                         <p>Password recovery tool</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-wifi"></i>
@@ -2115,7 +2237,7 @@
                         <h3>Aircrack-ng</h3>
                         <p>Wireless security suite</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-bug"></i>
@@ -2123,7 +2245,7 @@
                         <h3>Metasploit</h3>
                         <p>Penetration testing framework</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-spider"></i>
@@ -2131,7 +2253,7 @@
                         <h3>Burp Suite</h3>
                         <p>Web vulnerability scanner</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-terminal"></i>
@@ -2139,7 +2261,7 @@
                         <h3>Kali Linux</h3>
                         <p>Security-focused OS</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-lock-open"></i>
@@ -2149,7 +2271,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="tab-content" id="network-tools">
                 <div class="tools-grid">
                     <div class="tool-card">
@@ -2159,7 +2281,7 @@
                         <h3>Wireshark</h3>
                         <p>Network protocol analyzer</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-search"></i>
@@ -2167,7 +2289,7 @@
                         <h3>Nmap</h3>
                         <p>Network discovery tool</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-wifi"></i>
@@ -2177,7 +2299,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="tab-content" id="security-tools">
                 <div class="tools-grid">
                     <div class="tool-card">
@@ -2187,7 +2309,7 @@
                         <h3>Metasploit</h3>
                         <p>Penetration testing framework</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-key"></i>
@@ -2195,7 +2317,7 @@
                         <h3>Hashcat</h3>
                         <p>Password recovery tool</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-lock-open"></i>
@@ -2203,7 +2325,7 @@
                         <h3>John the Ripper</h3>
                         <p>Password cracker</p>
                     </div>
-                    
+
                     <div class="tool-card">
                         <div class="tool-icon">
                             <i class="fas fa-terminal"></i>
@@ -2249,7 +2371,7 @@
                 <div class="footer-text">
                     <p>&copy; <span id="currentYear"></span> Byte0. All rights reserved.</p>
                 </div>
-                
+
                 <div class="footer-social">
                     <a href="https://github.com/Byte0-0x" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
                 </div>
@@ -2259,33 +2381,83 @@
 
     <!-- JavaScript -->
     <script>
+        // Custom cursor
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorOutline = document.getElementById('cursor-outline');
+        
+        document.addEventListener('mousemove', function(e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            
+            // Add slight delay to outline for smooth effect
+            setTimeout(() => {
+                cursorOutline.style.left = `${posX}px`;
+                cursorOutline.style.top = `${posY}px`;
+            }, 50);
+        });
+        
+        // Add hover effect to interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .btn, .project-card, .service-card, .skill-card, .tool-card');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursorOutline.classList.add('cursor-hover');
+                cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursorDot.style.backgroundColor = '#01ffd4';
+                cursorDot.style.boxShadow = '0 0 15px rgba(1, 255, 212, 0.8)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursorOutline.classList.remove('cursor-hover');
+                cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorDot.style.backgroundColor = '#01ffd4';
+                cursorDot.style.boxShadow = '0 0 10px rgba(1, 255, 212, 0.8)';
+            });
+        });
+        
+        // Hide cursor when mouse leaves window
+        document.addEventListener('mouseout', function(e) {
+            if (e.relatedTarget === null) {
+                cursorDot.style.opacity = '0';
+                cursorOutline.style.opacity = '0';
+            }
+        });
+        
+        document.addEventListener('mouseover', function() {
+            cursorDot.style.opacity = '1';
+            cursorOutline.style.opacity = '1';
+        });
+
         // Loading screen animation
         document.addEventListener('DOMContentLoaded', function() {
             const loadingScreen = document.getElementById('loadingScreen');
             const loadingProgressBar = document.getElementById('loadingProgressBar');
             const loadingStatus = document.getElementById('loadingStatus');
             const loadingParticles = document.getElementById('loadingParticles');
-            
+
             // Create loading particles
             for (let i = 0; i < 20; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('loading-particle');
-                
+
                 // Random position, size and animation duration
                 const size = Math.random() * 6 + 2;
                 const posX = Math.random() * 100;
                 const delay = Math.random() * 4;
                 const duration = Math.random() * 3 + 2;
-                
+
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 particle.style.left = `${posX}%`;
                 particle.style.animationDelay = `${delay}s`;
                 particle.style.animationDuration = `${duration}s`;
-                
+
                 loadingParticles.appendChild(particle);
             }
-            
+
             // Loading progress simulation
             const loadingTexts = [
                 'Scanning network...',
@@ -2295,15 +2467,15 @@
                 'Loading portfolio assets...',
                 'Finalizing setup...'
             ];
-            
+
             let progress = 0;
             const loadingInterval = setInterval(() => {
                 progress += Math.random() * 10;
-                
+
                 if (progress >= 100) {
                     progress = 100;
                     clearInterval(loadingInterval);
-                    
+
                     // Hide loading screen after a short delay
                     setTimeout(() => {
                         loadingScreen.classList.add('hidden');
@@ -2313,23 +2485,23 @@
                         }, 500);
                     }, 500);
                 }
-                
+
                 // Update progress bar
                 loadingProgressBar.style.width = `${progress}%`;
-                
+
                 // Update loading text
                 const textIndex = Math.min(Math.floor(progress / 20), loadingTexts.length - 1);
                 loadingStatus.textContent = loadingTexts[textIndex];
             }, 400);
         });
-        
+
         // Mobile menu toggle
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        
+
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
-            
+
             // Change icon
             const icon = menuBtn.querySelector('i');
             if (mobileMenu.classList.contains('active')) {
@@ -2340,7 +2512,7 @@
                 icon.classList.add('fa-bars');
             }
         });
-        
+
         // Close mobile menu when clicking on a link
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
@@ -2351,13 +2523,13 @@
                 icon.classList.add('fa-bars');
             });
         });
-        
+
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
+
         // Scroll animations
         const fadeElements = document.querySelectorAll('.fade-in');
-        
+
         // Intersection Observer for fade-in elements
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2366,11 +2538,11 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         fadeElements.forEach(element => {
             observer.observe(element);
         });
-        
+
         // Header scroll effect
         const header = document.querySelector('header');
         window.addEventListener('scroll', () => {
@@ -2380,48 +2552,48 @@
                 header.classList.remove('scrolled');
             }
         });
-        
+
         // Animated background
         function createParticles() {
             const animatedBg = document.getElementById('animatedBg');
             // Clear existing particles
             animatedBg.innerHTML = '';
-            
+
             const numberOfParticles = 15;
-            
+
             for (let i = 0; i < numberOfParticles; i++) {
                 const particle = document.createElement('span');
-                
+
                 // Random position, size and animation duration
                 const size = Math.random() * 15 + 5;
                 const posX = Math.random() * 100;
                 const delay = Math.random() * 15;
                 const duration = Math.random() * 10 + 10;
-                
+
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 particle.style.left = `${posX}%`;
                 particle.style.animationDelay = `${delay}s`;
                 particle.style.animationDuration = `${duration}s`;
-                
+
                 animatedBg.appendChild(particle);
             }
         }
-        
+
         // Initialize particles
         createParticles();
-        
+
         // Recreate particles periodically to ensure they're always visible
         setInterval(createParticles, 30000);
-        
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
+
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
@@ -2431,30 +2603,30 @@
                 }
             });
         });
-        
+
         // Counter animation
         const counters = document.querySelectorAll('.counter-value');
-        
+
         const animateCounter = (counter, target) => {
             const duration = 2000; // 2 seconds
             const step = Math.ceil(target / (duration / 30)); // Update every 30ms
             let current = 0;
-            
+
             const updateCounter = () => {
                 current += step;
                 if (current > target) {
                     current = target;
                 }
                 counter.textContent = current;
-                
+
                 if (current < target) {
                     setTimeout(updateCounter, 30);
                 }
             };
-            
+
             updateCounter();
         };
-        
+
         // Intersection Observer for counters
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2466,44 +2638,44 @@
                 }
             });
         }, { threshold: 0.5 });
-        
+
         counters.forEach(counter => {
             counterObserver.observe(counter);
         });
-        
+
         // Tab navigation for projects and tools
         const tabButtons = document.querySelectorAll('.tab-button');
-        
+
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
                 // Get the tab ID from the data-tab attribute
                 const tabId = button.getAttribute('data-tab');
-                
+
                 // Get all tab buttons in the same group
                 const tabGroup = button.closest('.tab-nav');
                 const groupButtons = tabGroup.querySelectorAll('.tab-button');
-                
+
                 // Remove active class from all buttons in the group
                 groupButtons.forEach(btn => {
                     btn.classList.remove('active');
                 });
-                
+
                 // Add active class to the clicked button
                 button.classList.add('active');
-                
+
                 // Get all tab content elements
                 const tabContents = button.closest('.container').querySelectorAll('.tab-content');
-                
+
                 // Hide all tab contents
                 tabContents.forEach(content => {
                     content.classList.remove('active');
                 });
-                
+
                 // Show the selected tab content
                 document.getElementById(tabId).classList.add('active');
             });
         });
-        
+
         // Reveal animations on scroll
         const revealElements = document.querySelectorAll('.reveal');
         const timelineItems = document.querySelectorAll('.timeline-item');
@@ -2513,7 +2685,7 @@
         const toolCards = document.querySelectorAll('.tool-card');
         const statItems = document.querySelectorAll('.stat-item');
         const viewAll = document.querySelector('.view-all');
-        
+
         // Intersection Observer for reveal animations
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2523,11 +2695,11 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         revealElements.forEach(element => {
             revealObserver.observe(element);
         });
-        
+
         // Intersection Observer for timeline items
         const timelineObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2537,11 +2709,11 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         timelineItems.forEach(item => {
             timelineObserver.observe(item);
         });
-        
+
         // Intersection Observer for skill cards
         const skillObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2551,11 +2723,11 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         skillCards.forEach(card => {
             skillObserver.observe(card);
         });
-        
+
         // Intersection Observer for project cards
         const projectObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2565,11 +2737,11 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         projectCards.forEach(card => {
             projectObserver.observe(card);
         });
-        
+
         // Intersection Observer for service cards
         const serviceObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2579,11 +2751,11 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         serviceCards.forEach(card => {
             serviceObserver.observe(card);
         });
-        
+
         // Intersection Observer for tool cards
         const toolObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2593,11 +2765,11 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         toolCards.forEach(card => {
             toolObserver.observe(card);
         });
-        
+
         // Intersection Observer for stat items
         const statObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2607,11 +2779,11 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         statItems.forEach(item => {
             statObserver.observe(item);
         });
-        
+
         // Intersection Observer for view all button
         if (viewAll) {
             const viewAllObserver = new IntersectionObserver((entries) => {
@@ -2622,32 +2794,93 @@
                     }
                 });
             }, { threshold: 0.1 });
-            
+
             viewAllObserver.observe(viewAll);
         }
-        
+
         // 3D Tilt Effect for cards
         const tiltElements = document.querySelectorAll('.project-card, .service-card, .skill-card, .tool-card');
-        
+
         tiltElements.forEach(element => {
             element.classList.add('tilt-effect');
-            
+
             element.addEventListener('mousemove', (e) => {
                 const rect = element.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
+
                 const xPercent = x / rect.width - 0.5;
                 const yPercent = y / rect.height - 0.5;
-                
+
                 const rotateX = yPercent * -8;
                 const rotateY = xPercent * 8;
+
+                element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.03)`;
+            });
+
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)`;
+            });
+        });
+
+        // Add magnetic effect to buttons
+        const magneticButtons = document.querySelectorAll('.btn');
+        
+        magneticButtons.forEach(button => {
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
                 
-                element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const deltaX = (x - centerX) / 10;
+                const deltaY = (y - centerY) / 10;
+                
+                button.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
             });
             
-            element.addEventListener('mouseleave', () => {
-                element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // Add floating animation to specific elements
+        const floatingElements = document.querySelectorAll('.service-icon, .tool-icon');
+        
+        floatingElements.forEach((element, index) => {
+            element.classList.add('hover-float');
+            // Add slight delay to each element for a wave effect
+            element.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Add glitch effect on hover for the logo
+        const logo = document.querySelector('.logo');
+        
+        logo.addEventListener('mouseenter', () => {
+            logo.classList.add('shake-animation');
+            setTimeout(() => {
+                logo.classList.remove('shake-animation');
+            }, 500);
+        });
+
+        // Add pulse animation to specific elements
+        const pulseElements = document.querySelectorAll('.badge, .counter-value');
+        
+        pulseElements.forEach(element => {
+            element.classList.add('pulse-animation');
+        });
+
+        // Add bounce animation to specific elements
+        const bounceElements = document.querySelectorAll('.hero-buttons .btn');
+        
+        bounceElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.classList.add('bounce-animation');
+                setTimeout(() => {
+                    element.classList.remove('bounce-animation');
+                }, 2000);
             });
         });
     </script>
