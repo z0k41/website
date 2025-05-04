@@ -12,7 +12,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none; /* Hide default cursor */
         }
 
         html, body {
@@ -58,7 +57,7 @@
             padding: 12px 28px;
             border-radius: 8px;
             font-weight: 600;
-            cursor: none; /* Use custom cursor */
+            cursor: pointer;
             transition: all 0.3s ease;
             gap: 8px;
             letter-spacing: 0.3px;
@@ -84,24 +83,6 @@
             left: 0;
         }
 
-        /* Button hover effect */
-        .btn::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(1, 255, 212, 0.3);
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:hover::after {
-            width: 300px;
-            height: 300px;
-        }
-
         .btn-primary {
             background-color: #01ffd4;
             color: #0a0a0a;
@@ -112,7 +93,7 @@
         .btn-primary:hover {
             background-color: #00e6be;
             color: #0a0a0a;
-            transform: translateY(-2px) scale(1.03);
+            transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(1, 255, 212, 0.3);
         }
 
@@ -126,7 +107,7 @@
         .btn-outline:hover {
             background-color: rgba(255, 255, 255, 0.05);
             border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px) scale(1.03);
+            transform: translateY(-2px);
         }
 
         .section {
@@ -165,40 +146,6 @@
 
         .text-accent {
             color: #01ffd4;
-        }
-
-        /* Custom cursor styles */
-        .cursor-dot,
-        .cursor-outline {
-            pointer-events: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            transition: opacity 0.3s ease;
-        }
-
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #01ffd4;
-            box-shadow: 0 0 10px rgba(1, 255, 212, 0.8);
-            transition: transform 0.1s ease;
-        }
-
-        .cursor-outline {
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(1, 255, 212, 0.5);
-            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
-        }
-
-        .cursor-hover {
-            transform: translate(-50%, -50%) scale(1.5);
-            background-color: rgba(1, 255, 212, 0.1);
-            border-color: rgba(1, 255, 212, 0.2);
         }
 
         /* Loading Screen */
@@ -491,8 +438,7 @@
         }
 
         .social-links a:hover {
-            transform: translateY(-2px) rotate(360deg);
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transform: translateY(-2px);
         }
 
         .menu-btn {
@@ -501,7 +447,7 @@
             border: none;
             color: #ffffff;
             font-size: 1.5rem;
-            cursor: none; /* Use custom cursor */
+            cursor: pointer;
         }
 
         /* Mobile menu - hidden by default */
@@ -584,8 +530,7 @@
 
         .mobile-social a:hover {
             background-color: rgba(1, 255, 212, 0.1);
-            transform: translateY(-2px) rotate(360deg);
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transform: translateY(-2px);
         }
 
         /* Hero section */
@@ -847,7 +792,7 @@
         }
 
         .timeline-item:hover {
-            transform: translateY(-5px) scale(1.03);
+            transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-color: rgba(1, 255, 212, 0.1);
         }
@@ -920,7 +865,7 @@
         }
 
         .skill-card:hover {
-            transform: translateY(-5px) scale(1.03);
+            transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-color: rgba(1, 255, 212, 0.1);
         }
@@ -966,7 +911,7 @@
         }
 
         .skill-tag:hover {
-            transform: translateY(-2px) scale(1.05);
+            transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
@@ -1013,7 +958,7 @@
         .project-card:nth-child(3).animate { animation-delay: 0.5s; }
 
         .project-card:hover {
-            transform: translateY(-5px) scale(1.03);
+            transform: translateY(-5px) scale(1.02);
             box-shadow: 0 10px 30px rgba(1, 255, 212, 0.1);
             border-color: rgba(1, 255, 212, 0.2);
         }
@@ -1149,7 +1094,7 @@
         }
 
         .service-card:hover {
-            transform: translateY(-5px) scale(1.03);
+            transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-color: rgba(1, 255, 212, 0.1);
         }
@@ -1223,7 +1168,7 @@
         .tool-card:nth-child(8).animate { animation-delay: 0.4s; }
 
         .tool-card:hover {
-            transform: translateY(-5px) scale(1.05);
+            transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(1, 255, 212, 0.1);
             border-color: rgba(1, 255, 212, 0.2);
             background-color: rgba(1, 255, 212, 0.03);
@@ -1326,8 +1271,7 @@
 
         .footer-social a:hover {
             color: #01ffd4;
-            transform: translateY(-2px) rotate(360deg);
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transform: translateY(-2px);
         }
 
         /* Glow effects */
@@ -1408,7 +1352,7 @@
         .stat-item:nth-child(4).animate { animation-delay: 0.4s; }
 
         .stat-item:hover {
-            transform: translateY(-5px) scale(1.03);
+            transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-color: rgba(1, 255, 212, 0.1);
         }
@@ -1465,7 +1409,7 @@
             background: transparent;
             color: rgba(255, 255, 255, 0.7);
             font-weight: 500;
-            cursor: none; /* Use custom cursor */
+            cursor: pointer;
             transition: all 0.3s ease;
             font-size: 0.95rem;
             min-height: 44px; /* Improve touch targets */
@@ -1589,58 +1533,6 @@
             transform: translateY(0);
         }
 
-        /* New animations and effects */
-        .hover-float {
-            transition: transform 0.3s ease;
-        }
-        
-        .hover-float:hover {
-            transform: translateY(-5px);
-        }
-        
-        .hover-glow:hover {
-            box-shadow: 0 0 15px rgba(1, 255, 212, 0.5);
-        }
-        
-        .rotate-on-hover:hover {
-            animation: rotate360 1s ease;
-        }
-        
-        @keyframes rotate360 {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .pulse-animation {
-            animation: pulse-element 2s infinite;
-        }
-        
-        @keyframes pulse-element {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .shake-animation:hover {
-            animation: shake 0.5s ease;
-        }
-        
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-5px); }
-            40%, 80% { transform: translateX(5px); }
-        }
-        
-        .bounce-animation {
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            60% { transform: translateY(-10px); }
-        }
-
         /* Responsive styles */
         @media (max-width: 992px) {
             .hero-content,
@@ -1672,14 +1564,6 @@
 
             .section-title {
                 font-size: 2.2rem;
-            }
-            
-            .cursor-dot, .cursor-outline {
-                display: none; /* Hide custom cursor on touch devices */
-            }
-            
-            * {
-                cursor: auto !important; /* Restore default cursor on touch devices */
             }
         }
 
@@ -1851,10 +1735,6 @@
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
-
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-grid"></div>
@@ -2379,57 +2259,7 @@
 
     <!-- JavaScript -->
     <script>
-        // Custom cursor
-        const cursorDot = document.getElementById('cursor-dot');
-        const cursorOutline = document.getElementById('cursor-outline');
-        
-        document.addEventListener('mousemove', function(e) {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            
-            // Add slight delay to outline for smooth effect
-            setTimeout(() => {
-                cursorOutline.style.left = `${posX}px`;
-                cursorOutline.style.top = `${posY}px`;
-            }, 50);
-        });
-        
-        // Add hover effect to interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .btn, .project-card, .service-card, .skill-card, .tool-card');
-        
-        interactiveElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursorOutline.classList.add('cursor-hover');
-                cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                cursorDot.style.backgroundColor = '#01ffd4';
-                cursorDot.style.boxShadow = '0 0 15px rgba(1, 255, 212, 0.8)';
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                cursorOutline.classList.remove('cursor-hover');
-                cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursorDot.style.backgroundColor = '#01ffd4';
-                cursorDot.style.boxShadow = '0 0 10px rgba(1, 255, 212, 0.8)';
-            });
-        });
-        
-        // Hide cursor when mouse leaves window
-        document.addEventListener('mouseout', function(e) {
-            if (e.relatedTarget === null) {
-                cursorDot.style.opacity = '0';
-                cursorOutline.style.opacity = '0';
-            }
-        });
-        
-        document.addEventListener('mouseover', function() {
-            cursorDot.style.opacity = '1';
-            cursorOutline.style.opacity = '1';
-        });
-
-        // Fixed loading screen animation with timeout
+        // Loading screen animation
         document.addEventListener('DOMContentLoaded', function() {
             const loadingScreen = document.getElementById('loadingScreen');
             const loadingProgressBar = document.getElementById('loadingProgressBar');
@@ -2455,14 +2285,6 @@
 
                 loadingParticles.appendChild(particle);
             }
-
-            // Force the loading screen to end after 5 seconds maximum
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }, 5000);
 
             // Loading progress simulation
             const loadingTexts = [
@@ -2821,72 +2643,11 @@
                 const rotateX = yPercent * -8;
                 const rotateY = xPercent * 8;
 
-                element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.03)`;
+                element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
             });
 
             element.addEventListener('mouseleave', () => {
-                element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
-            });
-        });
-
-        // Add magnetic effect to buttons
-        const magneticButtons = document.querySelectorAll('.btn');
-        
-        magneticButtons.forEach(button => {
-            button.addEventListener('mousemove', (e) => {
-                const rect = button.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const deltaX = (x - centerX) / 10;
-                const deltaY = (y - centerY) / 10;
-                
-                button.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-            });
-            
-            button.addEventListener('mouseleave', () => {
-                button.style.transform = 'translate(0, 0)';
-            });
-        });
-
-        // Add floating animation to specific elements
-        const floatingElements = document.querySelectorAll('.service-icon, .tool-icon');
-        
-        floatingElements.forEach((element, index) => {
-            element.classList.add('hover-float');
-            // Add slight delay to each element for a wave effect
-            element.style.animationDelay = `${index * 0.2}s`;
-        });
-
-        // Add glitch effect on hover for the logo
-        const logo = document.querySelector('.logo');
-        
-        logo.addEventListener('mouseenter', () => {
-            logo.classList.add('shake-animation');
-            setTimeout(() => {
-                logo.classList.remove('shake-animation');
-            }, 500);
-        });
-
-        // Add pulse animation to specific elements
-        const pulseElements = document.querySelectorAll('.badge, .counter-value');
-        
-        pulseElements.forEach(element => {
-            element.classList.add('pulse-animation');
-        });
-
-        // Add bounce animation to specific elements
-        const bounceElements = document.querySelectorAll('.hero-buttons .btn');
-        
-        bounceElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                element.classList.add('bounce-animation');
-                setTimeout(() => {
-                    element.classList.remove('bounce-animation');
-                }, 2000);
+                element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
             });
         });
     </script>
