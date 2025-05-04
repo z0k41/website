@@ -956,8 +956,6 @@
         .tag-highlight {
             background-color: rgba(1, 255, 212, 0.1);
             color: #01ffd4;
-            border: 1px solid rgba(1, 255, 212, 0.255,212,0.1);
-            color: #01ffd4;
             border: 1px solid rgba(1, 255, 212, 0.2);
         }
 
@@ -2431,7 +2429,7 @@
             cursorOutline.style.opacity = '1';
         });
 
-        // Loading screen animation
+        // Fixed loading screen animation with timeout
         document.addEventListener('DOMContentLoaded', function() {
             const loadingScreen = document.getElementById('loadingScreen');
             const loadingProgressBar = document.getElementById('loadingProgressBar');
@@ -2457,6 +2455,14 @@
 
                 loadingParticles.appendChild(particle);
             }
+
+            // Force the loading screen to end after 5 seconds maximum
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 5000);
 
             // Loading progress simulation
             const loadingTexts = [
@@ -2819,7 +2825,7 @@
             });
 
             element.addEventListener('mouseleave', () => {
-                element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)`;
+                element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
             });
         });
 
