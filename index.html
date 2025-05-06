@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Byte0 | About</title>
+    <title>Byte0 | PenTester Terminal</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -288,6 +288,8 @@
             color: var(--prompt-color);
             margin-right: 8px;
             text-shadow: 0 0 3px var(--prompt-color);
+            display: flex;
+            align-items: center;
         }
 
         .command {
@@ -343,7 +345,7 @@
             color: var(--command-color);
             font-family: var(--font-mono);
             font-size: 14px;
-            caret-color: var(--accent-color);
+            caret-color: transparent; /* Hide default cursor */
         }
 
         /* Explicitly remove focus outline */
@@ -353,16 +355,17 @@
             border: none;
         }
 
-        /* Cursor animation */
+        /* Cursor animation - MODIFIED to be a blinking box */
         .cursor {
             display: inline-block;
-            width: 8px;
+            width: 10px;
             height: 16px;
-            background-color: var(--accent-color);
+            background-color: var(--command-color);
             animation: blink 1s step-end infinite;
             vertical-align: middle;
             margin-left: 2px;
-            box-shadow: 0 0 5px var(--accent-color);
+            position: relative;
+            top: -1px;
         }
 
         @keyframes blink {
@@ -808,18 +811,6 @@
             }
         }
 
-        /* Matrix effect */
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.05;
-            pointer-events: none;
-        }
-
         /* Help menu */
         .help-grid {
             display: grid;
@@ -1066,9 +1057,6 @@
     </style>
 </head>
 <body>
-    <!-- Matrix background effect -->
-    <canvas id="matrixBg" class="matrix-bg"></canvas>
-
     <!-- Particles container -->
     <div class="particles" id="particles"></div>
 
@@ -1100,13 +1088,13 @@
                     ██████╔╝   ██║      ██║   ███████╗╚██████╔╝
                     ╚═════╝    ╚═╝      ╚═╝   ╚══════╝ ╚═════╝ 
                 </div>
-                <div class="typing">Welcome to Byte0's Terminal Portfolio v1.0.0</div>
+                <p>Welcome to Byte0's Terminal Portfolio v1.0.0</p>
                 <p>Type <span class="command">help</span> to see available commands.</p>
             </div>
 
             <!-- Initial terminal line -->
             <div class="terminal-line">
-                <span class="prompt">terminal@byte0:~$</span>
+                <span class="prompt">terminal@byte0:~$ <span class="cursor"></span></span>
                 <span class="command">whoami</span>
             </div>
             <div class="terminal-line output">
@@ -1117,9 +1105,8 @@
 
         <!-- Terminal input -->
         <div class="terminal-input-line">
-            <span class="prompt">terminal@byte0:~$</span>
+            <span class="prompt">terminal@byte0:~$ <span class="cursor"></span></span>
             <input type="text" class="terminal-input" id="terminalInput" autocomplete="off" autofocus aria-label="Terminal input">
-            <span class="cursor"></span>
         </div>
     </div>
 
@@ -1480,7 +1467,7 @@
                         </div>
                         
                         <div class="terminal-line">
-                            <span class="prompt">terminal@byte0:~$</span>
+                            <span class="prompt">terminal@byte0:~$ <span class="cursor"></span></span>
                             <span class="command">echo "Looking forward to hearing from you!"</span>
                         </div>
                         <div class="terminal-line output">
@@ -1521,17 +1508,17 @@
                             <div class="help-command">clear</div>
                             <div class="help-description">Clear the terminal</div>
                             
-                            <div class="help-command">matrix</div>
-                            <div class="help-description">Toggle matrix background effect</div>
-                            
                             <div class="help-command">banner</div>
                             <div class="help-description">Display the welcome banner</div>
                             
-                            <div class="help-command">ls</div>
-                            <div class="help-description">List files in current directory</div>
+                            <div class="help-command">sudo</div>
+                            <div class="help-description">Try to gain elevated privileges</div>
                             
-                            <div class="help-command">cat [filename]</div>
-                            <div class="help-description">Display file contents</div>
+                            <div class="help-command">exit</div>
+                            <div class="help-description">Attempt to exit the terminal</div>
+                            
+                            <div class="help-command">ping</div>
+                            <div class="help-description">Ping localhost</div>
                         </div>
                         
                         <p style="margin-top: 15px;">Type any command to execute it.</p>
@@ -1547,7 +1534,7 @@
                     ██████╔╝   ██║      ██║   ███████╗╚██████╔╝
                     ╚═════╝    ╚═╝      ╚═╝   ╚══════╝ ╚═════╝ 
                         </div>
-                        <div class="typing">Welcome to Byte0's Terminal Portfolio v1.0.0</div>
+                        <p>Welcome to Byte0's Terminal Portfolio v1.0.0</p>
                         <p>Type <span class="command">help</span> to see available commands.</p>
                     </div>
                 `
@@ -1555,10 +1542,6 @@
 
             // Fun commands
             const funCommands = {
-                matrix: function() {
-                    toggleMatrix();
-                    return '<p class="success">Matrix effect toggled.</p>';
-                },
                 sudo: function() {
                     return '<p class="error">Permission denied: Nice try! 😎</p>';
                 },
@@ -1572,40 +1555,6 @@
                            '<p>--- 127.0.0.1 ping statistics ---</p>' +
                            '<p>2 packets transmitted, 2 packets received, 0.0% packet loss</p>' +
                            '<p>round-trip min/avg/max/stddev = 0.037/0.038/0.039/0.001 ms</p>';
-                },
-                ls: function() {
-                    return '<p>about.txt  projects.txt  skills.txt  services.txt  tools.txt  contact.txt  secret.txt</p>';
-                },
-                cat: function(args) {
-                    if (!args || args.length === 0) {
-                        return '<p class="error">Usage: cat [filename]</p>';
-                    }
-                    
-                    const file = args[0].toLowerCase();
-                    if (file === 'about.txt') {
-                        processCommand('about');
-                        return '';
-                    } else if (file === 'projects.txt') {
-                        processCommand('projects');
-                        return '';
-                    } else if (file === 'skills.txt') {
-                        processCommand('skills');
-                        return '';
-                    } else if (file === 'services.txt') {
-                        processCommand('services');
-                        return '';
-                    } else if (file === 'tools.txt') {
-                        processCommand('tools');
-                        return '';
-                    } else if (file === 'contact.txt') {
-                        processCommand('contact');
-                        return '';
-                    } else if (file === 'secret.txt') {
-                        return '<p class="warning">ACCESS DENIED: This file requires higher privileges.</p>' +
-                               '<p>Try using the <span class="command">sudo</span> command first.</p>';
-                    } else {
-                        return `<p class="error">cat: ${args[0]}: No such file or directory</p>`;
-                    }
                 }
             };
 
@@ -1625,7 +1574,7 @@
                 // Add command to terminal
                 const commandLine = document.createElement('div');
                 commandLine.className = 'terminal-line';
-                commandLine.innerHTML = `<span class="prompt">terminal@byte0:~$</span> <span class="command">${command}</span>`;
+                commandLine.innerHTML = `<span class="prompt">terminal@byte0:~$ <span class="cursor"></span></span> <span class="command">${command}</span>`;
                 terminalContent.appendChild(commandLine);
                 
                 // Process command
@@ -1718,8 +1667,8 @@
                     // Get all available commands
                     const availableCommands = [
                         'help', 'about', 'skills', 'projects', 'services', 
-                        'tools', 'stats', 'contact', 'clear', 'matrix', 
-                        'banner', 'sudo', 'exit', 'ping', 'ls', 'cat'
+                        'tools', 'stats', 'contact', 'clear', 
+                        'banner', 'sudo', 'exit', 'ping'
                     ];
                     
                     // Filter commands that start with input
@@ -1733,7 +1682,7 @@
                     else if (matchingCommands.length > 1) {
                         const commandLine = document.createElement('div');
                         commandLine.className = 'terminal-line';
-                        commandLine.innerHTML = `<span class="prompt">terminal@byte0:~$</span> <span class="command">${input}</span>`;
+                        commandLine.innerHTML = `<span class="prompt">terminal@byte0:~$ <span class="cursor"></span></span> <span class="command">${input}</span>`;
                         terminalContent.appendChild(commandLine);
                         
                         const outputElement = document.createElement('div');
@@ -1746,86 +1695,6 @@
                     }
                 }
             });
-            
-            // Matrix background effect
-            const canvas = document.getElementById('matrixBg');
-            const ctx = canvas.getContext('2d');
-            let matrixEnabled = false;
-            
-            // Set canvas size
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            
-            // Initialize matrix effect
-            function initMatrix() {
-                resizeCanvas();
-                
-                const chars = '01010101010101010101010101010101';
-                const fontSize = 14;
-                const columns = canvas.width / fontSize;
-                
-                // Array to store the Y position of each column
-                const drops = [];
-                for (let i = 0; i < columns; i++) {
-                    drops[i] = 1;
-                }
-                
-                // Drawing the characters
-                function draw() {
-                    if (!matrixEnabled) {
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        return;
-                    }
-                    
-                    // Black background with opacity
-                    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    
-                    // Green text
-                    ctx.fillStyle = '#01ffd4';
-                    ctx.font = fontSize + 'px monospace';
-                    
-                    // Loop through drops
-                    for (let i = 0; i < drops.length; i++) {
-                        // Random character
-                        const text = chars[Math.floor(Math.random() * chars.length)];
-                        
-                        // x = i * fontSize, y = drops[i] * fontSize
-                        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                        
-                        // Sending the drop back to the top randomly after it has crossed the screen
-                        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                            drops[i] = 0;
-                        }
-                        
-                        // Incrementing Y coordinate
-                        drops[i]++;
-                    }
-                    
-                    requestAnimationFrame(draw);
-                }
-                
-                draw();
-            }
-            
-            // Toggle matrix effect
-            function toggleMatrix() {
-                matrixEnabled = !matrixEnabled;
-                
-                if (matrixEnabled) {
-                    canvas.style.opacity = '0.05';
-                    initMatrix();
-                } else {
-                    canvas.style.opacity = '0';
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                }
-            }
-            
-            // Initialize
-            window.addEventListener('resize', resizeCanvas);
-            initMatrix();
             
             // Terminal buttons functionality
             document.querySelector('.button-close').addEventListener('click', function() {
