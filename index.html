@@ -288,8 +288,6 @@
             color: var(--prompt-color);
             margin-right: 8px;
             text-shadow: 0 0 3px var(--prompt-color);
-            display: flex;
-            align-items: center;
         }
 
         .command {
@@ -345,7 +343,6 @@
             color: var(--command-color);
             font-family: var(--font-mono);
             font-size: 14px;
-            caret-color: transparent; /* Hide default cursor */
         }
 
         /* Explicitly remove focus outline */
@@ -353,24 +350,6 @@
             outline: none;
             box-shadow: none;
             border: none;
-        }
-
-        /* Cursor animation - MODIFIED to be a blinking box */
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 16px;
-            background-color: var(--command-color);
-            animation: blink 1s step-end infinite;
-            vertical-align: middle;
-            margin-left: 2px;
-            position: relative;
-            top: -1px;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
         }
 
         /* Loading animation */
@@ -1023,6 +1002,9 @@
             background-color: rgba(1, 255, 212, 0.2);
             border: 2px solid var(--accent-color);
             cursor: pointer;
+            display: flex;255,212,0.2);
+            border: 2px solid var(--accent-color);
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1094,7 +1076,7 @@
 
             <!-- Initial terminal line -->
             <div class="terminal-line">
-                <span class="prompt">terminal@byte0:~$ <span class="cursor"></span></span>
+                <span class="prompt">terminal@byte0:~$</span>
                 <span class="command">whoami</span>
             </div>
             <div class="terminal-line output">
@@ -1105,7 +1087,7 @@
 
         <!-- Terminal input -->
         <div class="terminal-input-line">
-            <span class="prompt">terminal@byte0:~$ <span class="cursor"></span></span>
+            <span class="prompt">terminal@byte0:~$</span>
             <input type="text" class="terminal-input" id="terminalInput" autocomplete="off" autofocus aria-label="Terminal input">
         </div>
     </div>
@@ -1467,7 +1449,7 @@
                         </div>
                         
                         <div class="terminal-line">
-                            <span class="prompt">terminal@byte0:~$ <span class="cursor"></span></span>
+                            <span class="prompt">terminal@byte0:~$</span>
                             <span class="command">echo "Looking forward to hearing from you!"</span>
                         </div>
                         <div class="terminal-line output">
@@ -1574,7 +1556,7 @@
                 // Add command to terminal
                 const commandLine = document.createElement('div');
                 commandLine.className = 'terminal-line';
-                commandLine.innerHTML = `<span class="prompt">terminal@byte0:~$ <span class="cursor"></span></span> <span class="command">${command}</span>`;
+                commandLine.innerHTML = `<span class="prompt">terminal@byte0:~$</span> <span class="command">${command}</span>`;
                 terminalContent.appendChild(commandLine);
                 
                 // Process command
@@ -1682,7 +1664,7 @@
                     else if (matchingCommands.length > 1) {
                         const commandLine = document.createElement('div');
                         commandLine.className = 'terminal-line';
-                        commandLine.innerHTML = `<span class="prompt">terminal@byte0:~$ <span class="cursor"></span></span> <span class="command">${input}</span>`;
+                        commandLine.innerHTML = `<span class="prompt">terminal@byte0:~$</span> <span class="command">${input}</span>`;
                         terminalContent.appendChild(commandLine);
                         
                         const outputElement = document.createElement('div');
@@ -1695,7 +1677,7 @@
                     }
                 }
             });
-            
+
             // Terminal buttons functionality
             document.querySelector('.button-close').addEventListener('click', function() {
                 const outputElement = document.createElement('div');
