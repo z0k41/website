@@ -1002,9 +1002,6 @@
             background-color: rgba(1, 255, 212, 0.2);
             border: 2px solid var(--accent-color);
             cursor: pointer;
-            display: flex;255,212,0.2);
-            border: 2px solid var(--accent-color);
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1492,15 +1489,6 @@
                             
                             <div class="help-command">banner</div>
                             <div class="help-description">Display the welcome banner</div>
-                            
-                            <div class="help-command">sudo</div>
-                            <div class="help-description">Try to gain elevated privileges</div>
-                            
-                            <div class="help-command">exit</div>
-                            <div class="help-description">Attempt to exit the terminal</div>
-                            
-                            <div class="help-command">ping</div>
-                            <div class="help-description">Ping localhost</div>
                         </div>
                         
                         <p style="margin-top: 15px;">Type any command to execute it.</p>
@@ -1522,23 +1510,8 @@
                 `
             };
 
-            // Fun commands
-            const funCommands = {
-                sudo: function() {
-                    return '<p class="error">Permission denied: Nice try! 😎</p>';
-                },
-                exit: function() {
-                    return '<p>You can\'t escape that easily! This is a browser terminal.</p>';
-                },
-                ping: function() {
-                    return '<p>PING 127.0.0.1 (127.0.0.1): 56 data bytes</p>' +
-                           '<p>64 bytes from 127.0.0.1: icmp_seq=0 ttl=64 time=0.037 ms</p>' +
-                           '<p>64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.039 ms</p>' +
-                           '<p>--- 127.0.0.1 ping statistics ---</p>' +
-                           '<p>2 packets transmitted, 2 packets received, 0.0% packet loss</p>' +
-                           '<p>round-trip min/avg/max/stddev = 0.037/0.038/0.039/0.001 ms</p>';
-                }
-            };
+            // Fun commands - removed sudo, exit, and ping as requested
+            const funCommands = {};
 
             // Process command
             function processCommand(command) {
@@ -1646,11 +1619,10 @@
                     e.preventDefault();
                     const input = terminalInput.value.toLowerCase();
                     
-                    // Get all available commands
+                    // Get all available commands - removed sudo, exit, and ping
                     const availableCommands = [
                         'help', 'about', 'skills', 'projects', 'services', 
-                        'tools', 'stats', 'contact', 'clear', 
-                        'banner', 'sudo', 'exit', 'ping'
+                        'tools', 'stats', 'contact', 'clear', 'banner'
                     ];
                     
                     // Filter commands that start with input
