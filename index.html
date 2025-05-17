@@ -2,1742 +2,215 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Byte0 | About Me</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-color: #0a0a0a;
-            --text-color: #f0f0f0;
-            --accent-color: #01ffd4;
-            --secondary-color: #444;
-            --terminal-bg: #0c0c0c;
-            --terminal-header: #1a1a1a;
-            --terminal-border: #333;
-            --success-color: #0f0;
-            --error-color: #f00;
-            --warning-color: #ff0;
-            --font-mono: 'JetBrains Mono', monospace;
-            --prompt-color: #01ffd4;
-            --command-color: #fff;
-            --output-color: #aaa;
-            --link-color: #01ffd4;
-            --selection-bg: rgba(1, 255, 212, 0.3);
-        }
-
-        ::selection {
-            background-color: var(--selection-bg);
-            color: var(--text-color);
-        }
-
-        html, body {
-            height: 100%;
-            overflow: hidden;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-mono);
-            line-height: 1.6;
-        }
-
-        a {
-            color: var(--link-color);
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-
-        a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-
-        a:hover::before {
-            width: 100%;
-        }
-
-        /* Terminal container - MODIFIED FOR FULL SCREEN */
-        .terminal-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            background-color: var(--terminal-bg);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            animation: bootUp 1.5s ease-out;
-        }
-
-        @keyframes bootUp {
-            0% {
-                opacity: 0;
-                box-shadow: 0 0 0 rgba(1, 255, 212, 0);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(1, 255, 212, 0.3);
-            }
-            100% {
-                opacity: 1;
-                box-shadow: none;
-            }
-        }
-
-        /* Terminal header */
-        .terminal-header {
-            display: flex;
-            align-items: center;
-            padding: 10px 15px;
-            background-color: var(--terminal-header);
-            border-bottom: 1px solid var(--terminal-border);
-            user-select: none;
-        }
-
-        .terminal-buttons {
-            display: flex;
-            gap: 8px;
-            margin-right: 15px;
-        }
-
-        .terminal-button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .terminal-button:hover {
-            transform: scale(1.2);
-        }
-
-        .button-close {
-            background-color: #ff5f56;
-            box-shadow: 0 0 0 rgba(255, 95, 86, 0);
-            animation: pulsate 2s infinite;
-        }
-
-        @keyframes pulsate {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 95, 86, 0.4);
-            }
-            70% {
-                box-shadow: 0 0 0 6px rgba(255, 95, 86, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 95, 86, 0);
-            }
-        }
-
-        .button-minimize {
-            background-color: #ffbd2e;
-        }
-
-        .button-maximize {
-            background-color: #27c93f;
-        }
-
-        .terminal-title {
-            flex-grow: 1;
-            text-align: center;
-            font-size: 14px;
-            color: var(--text-color);
-            opacity: 0.7;
-            text-shadow: 0 0 5px rgba(1, 255, 212, 0.5);
-            animation: textGlow 2s infinite alternate;
-        }
-
-        @keyframes textGlow {
-            from {
-                text-shadow: 0 0 2px rgba(1, 255, 212, 0.3);
-            }
-            to {
-                text-shadow: 0 0 8px rgba(1, 255, 212, 0.7);
-            }
-        }
-
-        /* Terminal content */
-        .terminal-content {
-            flex-grow: 1;
-            padding: 15px;
-            overflow-y: auto;
-            position: relative;
-            scroll-behavior: smooth;
-        }
-
-        .terminal-content::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .terminal-content::-webkit-scrollbar-track {
-            background: var(--terminal-bg);
-        }
-
-        .terminal-content::-webkit-scrollbar-thumb {
-            background: var(--terminal-border);
-            border-radius: 4px;
-        }
-
-        .terminal-content::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        /* Terminal welcome */
-        .terminal-welcome {
-            margin-bottom: 20px;
-            color: var(--accent-color);
-            font-weight: bold;
-            white-space: pre-line;
-        }
-
-        .ascii-art {
-            font-family: monospace;
-            white-space: pre;
-            line-height: 1.2;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            font-size: 12px;
-            animation: glitchArt 5s infinite;
-            text-shadow: 0 0 5px var(--accent-color);
-        }
-
-        @keyframes glitchArt {
-            0% {
-                opacity: 1;
-                transform: translateX(0);
-                text-shadow: 0 0 5px var(--accent-color);
-            }
-            2% {
-                opacity: 0.8;
-                transform: translateX(2px);
-                text-shadow: 2px 0 1px rgba(255, 0, 0, 0.5), -2px 0 1px rgba(0, 255, 255, 0.5);
-            }
-            4% {
-                opacity: 1;
-                transform: translateX(0);
-                text-shadow: 0 0 5px var(--accent-color);
-            }
-            20% {
-                opacity: 1;
-                transform: translateX(0);
-                text-shadow: 0 0 5px var(--accent-color);
-            }
-            22% {
-                opacity: 0.9;
-                transform: translateX(-2px);
-                text-shadow: -2px 0 1px rgba(255, 0, 0, 0.5), 2px 0 1px rgba(0, 255, 255, 0.5);
-            }
-            24% {
-                opacity: 1;
-                transform: translateX(0);
-                text-shadow: 0 0 5px var(--accent-color);
-            }
-            80% {
-                opacity: 1;
-                transform: translateX(0);
-                text-shadow: 0 0 5px var(--accent-color);
-            }
-            82% {
-                opacity: 0.8;
-                transform: translateX(1px);
-                text-shadow: 1px 0 1px rgba(255, 0, 0, 0.5), -1px 0 1px rgba(0, 255, 255, 0.5);
-            }
-            84% {
-                opacity: 1;
-                transform: translateX(0);
-                text-shadow: 0 0 5px var(--accent-color);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-                text-shadow: 0 0 5px var(--accent-color);
-            }
-        }
-
-        /* Terminal line */
-        .terminal-line {
-            margin-bottom: 10px;
-            word-wrap: break-word;
-            animation: fadeIn 0.2s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .prompt {
-            color: var(--prompt-color);
-            margin-right: 8px;
-            text-shadow: 0 0 3px var(--prompt-color);
-        }
-
-        .command {
-            color: var(--command-color);
-        }
-
-        .output {
-            color: var(--output-color);
-            padding-left: 15px;
-            border-left: 2px solid var(--secondary-color);
-            margin: 10px 0 15px 10px;
-        }
-
-        .error {
-            color: var(--error-color);
-            animation: errorShake 0.5s ease;
-        }
-
-        @keyframes errorShake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-5px); }
-            40%, 80% { transform: translateX(5px); }
-        }
-
-        .success {
-            color: var(--success-color);
-            animation: successPulse 1s ease;
-        }
-
-        @keyframes successPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .warning {
-            color: var(--warning-color);
-        }
-
-        /* Terminal input */
-        .terminal-input-line {
-            display: flex;
-            margin-top: 15px;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        /* MODIFIED: Removed outline/stroke from input */
-        .terminal-input {
-            flex-grow: 1;
-            background: transparent;
-            border: none;
-            outline: none;
-            color: var(--command-color);
-            font-family: var(--font-mono);
-            font-size: 14px;
-        }
-
-        /* Explicitly remove focus outline */
-        .terminal-input:focus {
-            outline: none;
-            box-shadow: none;
-            border: none;
-        }
-
-        /* Loading animation */
-        .loading {
-            display: inline-block;
-            margin-left: 10px;
-            position: relative;
-        }
-
-        .loading::after {
-            content: '';
-            display: inline-block;
-            width: 0;
-            animation: loading 1.5s infinite;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        @keyframes loading {
-            0% { content: '.'; }
-            33% { content: '..'; }
-            66% { content: '...'; }
-            100% { content: ''; }
-        }
-
-        /* Section styles */
-        .section {
-            margin: 15px 0 25px 0;
-            border-top: 1px dashed var(--secondary-color);
-            padding-top: 15px;
-            animation: sectionFadeIn 0.5s ease-out;
-        }
-
-        @keyframes sectionFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-title {
-            color: var(--accent-color);
-            margin-bottom: 10px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            text-shadow: 0 0 5px rgba(1, 255, 212, 0.5);
-        }
-
-        .section-title i {
-            margin-right: 8px;
-            animation: iconPulse 2s infinite alternate;
-        }
-
-        @keyframes iconPulse {
-            from {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            to {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-        }
-
-        /* Grid layouts */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 15px 0;
-        }
-
-        .grid-item {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--terminal-border);
-            border-radius: 4px;
-            padding: 15px;
-            transition: all 0.3s ease;
-            animation: gridItemAppear 0.5s ease-out;
-            animation-fill-mode: both;
-        }
-
-        @keyframes gridItemAppear {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .grid-item:nth-child(1) { animation-delay: 0.1s; }
-        .grid-item:nth-child(2) { animation-delay: 0.2s; }
-        .grid-item:nth-child(3) { animation-delay: 0.3s; }
-        .grid-item:nth-child(4) { animation-delay: 0.4s; }
-        .grid-item:nth-child(5) { animation-delay: 0.5s; }
-        .grid-item:nth-child(6) { animation-delay: 0.6s; }
-        .grid-item:nth-child(7) { animation-delay: 0.7s; }
-        .grid-item:nth-child(8) { animation-delay: 0.8s; }
-
-        .grid-item:hover {
-            background-color: rgba(1, 255, 212, 0.1);
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 5px 15px rgba(1, 255, 212, 0.2);
-            border-color: var(--accent-color);
-            z-index: 1;
-        }
-
-        .grid-item-title {
-            color: var(--accent-color);
-            margin-bottom: 8px;
-            font-weight: bold;
-            position: relative;
-            display: inline-block;
-        }
-
-        .grid-item-title::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-
-        .grid-item:hover .grid-item-title::after {
-            width: 100%;
-        }
-
-        /* Project card */
-        .project-card {
-            border: 1px solid var(--terminal-border);
-            border-radius: 4px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            animation: cardSlideIn 0.5s ease-out;
-            animation-fill-mode: both;
-        }
-
-        @keyframes cardSlideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .project-card:nth-child(1) { animation-delay: 0.1s; }
-        .project-card:nth-child(2) { animation-delay: 0.3s; }
-        .project-card:nth-child(3) { animation-delay: 0.5s; }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(1, 255, 212, 0.2);
-            border-color: var(--accent-color);
-        }
-
-        .project-header {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 10px 15px;
-            border-bottom: 1px solid var(--terminal-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .project-card:hover .project-header {
-            background-color: rgba(1, 255, 212, 0.1);
-        }
-
-        .project-title {
-            color: var(--accent-color);
-            font-weight: bold;
-            position: relative;
-            display: inline-block;
-        }
-
-        .project-title::before {
-            content: '>';
-            margin-right: 5px;
-            opacity: 0;
-            transform: translateX(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-title::before {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 10px;
-        }
-
-        .project-links a {
-            transition: all 0.3s ease;
-        }
-
-        .project-links a:hover {
-            transform: translateY(-2px);
-        }
-
-        .project-body {
-            padding: 15px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .tag {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--text-color);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .tag.highlight {
-            background-color: rgba(1, 255, 212, 0.2);
-            color: var(--accent-color);
-        }
-
-        /* Table styles */
-        .terminal-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 14px;
-            animation: tableAppear 0.5s ease-out;
-        }
-
-        @keyframes tableAppear {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .terminal-table th {
-            text-align: left;
-            padding: 8px;
-            border-bottom: 1px solid var(--terminal-border);
-            color: var(--accent-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .terminal-table th::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-            animation: scanLine 2s linear infinite;
-        }
-
-        @keyframes scanLine {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        .terminal-table td {
-            padding: 8px;
-            border-bottom: 1px dashed var(--terminal-border);
-            transition: all 0.3s ease;
-        }
-
-        .terminal-table tr {
-            transition: all 0.3s ease;
-        }
-
-        .terminal-table tr:hover {
-            background-color: rgba(1, 255, 212, 0.05);
-        }
-
-        .terminal-table tr:hover td {
-            color: var(--text-color);
-        }
-
-        /* Progress bar */
-        .progress-container {
-            width: 100%;
-            height: 8px;
-            background-color: var(--terminal-border);
-            border-radius: 4px;
-            margin: 8px 0;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background-color: var(--accent-color);
-            border-radius: 4px;
-            transition: width 1s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.2), 
-                transparent);
-            animation: progressGlow 1.5s linear infinite;
-        }
-
-        @keyframes progressGlow {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        /* Typing animation */
-        .typing {
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid var(--accent-color);
-            animation: typing 3s steps(40, end), blinkCursor 0.75s step-end infinite;
-            display: inline-block;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blinkCursor {
-            from, to { border-color: transparent }
-            50% { border-color: var(--accent-color) }
-        }
-
-        /* Glitch effect */
-        .glitch {
-            position: relative;
-            color: var(--accent-color);
-            font-weight: bold;
-            animation: glitch 3s infinite;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.8;
-        }
-
-        .glitch::before {
-            color: #0ff;
-            z-index: -1;
-            animation: glitch-effect 0.3s infinite;
-        }
-
-        .glitch::after {
-            color: #f0f;
-            z-index: -2;
-            animation: glitch-effect 0.3s infinite reverse;
-        }
-
-        @keyframes glitch {
-            0%, 80%, 100% {
-                text-shadow: 0 0 0 transparent;
-            }
-            81%, 83%, 85% {
-                text-shadow: -2px 0 #ff00c1, 2px 0 #00fff9;
-            }
-            82%, 84%, 86% {
-                text-shadow: 2px 0 #ff00c1, -2px 0 #00fff9;
-            }
-        }
-
-        @keyframes glitch-effect {
-            0% {
-                transform: translate(0);
-            }
-            20% {
-                transform: translate(-2px, 2px);
-            }
-            40% {
-                transform: translate(-2px, -2px);
-            }
-            60% {
-                transform: translate(2px, 2px);
-            }
-            80% {
-                transform: translate(2px, -2px);
-            }
-            100% {
-                transform: translate(0);
-            }
-        }
-
-        /* Help menu */
-        .help-grid {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 10px 15px;
-            margin: 15px 0;
-            animation: helpGridAppear 0.5s ease-out;
-        }
-
-        @keyframes helpGridAppear {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .help-command {
-            color: var(--accent-color);
-            font-weight: bold;
-            position: relative;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .help-command::before {
-            content: '>';
-            position: absolute;
-            left: -15px;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .help-command:hover {
-            transform: translateX(5px);
-        }
-
-        .help-command:hover::before {
-            opacity: 1;
-        }
-
-        .help-description {
-            color: var(--output-color);
-            transition: color 0.3s ease;
-        }
-
-        .help-command:hover + .help-description {
-            color: var(--text-color);
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .ascii-art {
-                font-size: 8px;
-            }
-        }
-
-        /* Accessibility focus styles - MODIFIED to remove cyan outline */
-        a:focus, button:focus {
-            outline: 2px solid var(--accent-color);
-            outline-offset: 2px;
-        }
-
-        input:focus {
-            outline: none;
-        }
-
-        /* Screen reader only */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
-        /* Scanlines effect */
-        .scanlines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0.01) 50%,
-                rgba(255, 255, 255, 0) 100%
-            );
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 10;
-            animation: scanlineMove 8s linear infinite;
-        }
-
-        @keyframes scanlineMove {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: 0 100%;
-            }
-        }
-
-        /* CRT effect */
-        .crt-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(
-                ellipse at center,
-                rgba(10, 10, 10, 0) 0%,
-                rgba(10, 10, 10, 0.15) 90%,
-                rgba(10, 10, 10, 0.4) 100%
-            );
-            pointer-events: none;
-            z-index: 9;
-            animation: crtFlicker 6s infinite;
-        }
-
-        @keyframes crtFlicker {
-            0%, 100% {
-                opacity: 1;
-            }
-            92%, 94%, 96% {
-                opacity: 0.8;
-            }
-            93%, 95%, 97% {
-                opacity: 1;
-            }
-        }
-
-        /* Particles */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 8;
-        }
-
-        .particle {
-            position: absolute;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat 10s linear infinite;
-        }
-
-        @keyframes particleFloat {
-            0% {
-                opacity: 0;
-                transform: translateY(0) translateX(0);
-            }
-            10% {
-                opacity: 0.5;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100vh) translateX(20px);
-            }
-        }
-
-        /* Typing effect for command output */
-        .typed-output {
-            overflow: hidden;
-            border-right: 0.15em solid var(--accent-color);
-            white-space: nowrap;
-            margin: 0;
-            letter-spacing: 0.05em;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--accent-color) }
-        }
-
-        /* Power button effect */
-        .power-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: rgba(1, 255, 212, 0.2);
-            border: 2px solid var(--accent-color);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(1, 255, 212, 0.5);
-            animation: powerPulse 2s infinite alternate;
-        }
-
-        @keyframes powerPulse {
-            from {
-                box-shadow: 0 0 5px rgba(1, 255, 212, 0.5);
-                transform: scale(1);
-            }
-            to {
-                box-shadow: 0 0 15px rgba(1, 255, 212, 0.8);
-                transform: scale(1.1);
-            }
-        }
-
-        .power-btn:hover {
-            background-color: rgba(1, 255, 212, 0.4);
-        }
-
-        .power-btn::after {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z0K4 - Cyber Security Specialist</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <!-- Particles container -->
-    <div class="particles" id="particles"></div>
 
-    <!-- Terminal container -->
-    <div class="terminal-container">
-        <!-- Terminal header -->
-        <div class="terminal-header">
-            <div class="terminal-buttons">
-                <div class="terminal-button button-close" title="Close" aria-label="Close terminal"></div>
-                <div class="terminal-button button-minimize" title="Minimize" aria-label="Minimize terminal"></div>
-                <div class="terminal-button button-maximize" title="Maximize" aria-label="Maximize terminal"></div>
-            </div>
-            <div class="terminal-title">terminal@byte0: ~/portfolio</div>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Z0K4</a>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <!-- Terminal content -->
-        <div class="terminal-content" id="terminalContent">
-            <!-- CRT and scanlines effects -->
-            <div class="crt-effect"></div>
-            <div class="scanlines"></div>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-subtitle">Hi, my name is</span>
+                <h1 class="hero-title">Z0K4 <span class="text-gradient">Cyber Security</span> Specialist</h1>
+                <p class="hero-description">I'm a specialized Penetration Tester with expertise in vulnerability assessment, network security, and exploit development. I help organizations identify and mitigate security threats before malicious actors can exploit them.</p>
+            </div>
+            <div class="hero-image">
+                <img src="/hero.png" alt="Hero Image">
+            </div>
+        </div>
+    </section>
 
-            <!-- Terminal welcome message -->
-            <div class="terminal-welcome">
-                <div class="ascii-art" id="asciiArt">
-                    ██████╗ ██╗   ██╗████████╗███████╗ ██████╗ 
-                    ██╔══██╗╚██╗ ██╔╝╚══██╔══╝██╔════╝██╔═████╗
-                    ██████╔╝ ╚████╔╝    ██║   █████╗  ██║██╔██║
-                    ██╔══██╗  ╚██╔╝     ██║   ██╔══╝  ████╔╝██║
-                    ██████╔╝   ██║      ██║   ███████╗╚██████╔╝
-                    ╚═════╝    ╚═╝      ╚═╝   ╚══════╝ ╚═════╝ 
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content" data-animate>
+                <p>I'm a dedicated Cyber Security Specialist with a focus on offensive security and vulnerability research. My approach combines technical expertise with strategic thinking to identify security weaknesses that others might miss. I specialize in network penetration testing, web application security assessments, and security architecture reviews.</p>
+                <p>My background in both defensive and offensive security gives me a comprehensive understanding of how attackers think and operate. When I'm not conducting security assessments, I'm researching new attack vectors, contributing to open-source security tools, and staying current with the latest threat intelligence.</p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Vulnerabilities Found</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2+</div>
+                        <div class="stat-label">Security Audits</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Secured Systems</div>
+                    </div>
                 </div>
-                <p>Welcome to Byte0's Terminal Portfolio v1.0.0</p>
-                <p>Type <span class="command">help</span> to see available commands.</p>
-            </div>
-
-            <!-- Initial terminal line -->
-            <div class="terminal-line">
-                <span class="prompt">terminal@byte0:~$</span>
-                <span class="command">whoami</span>
-            </div>
-            <div class="terminal-line output">
-                <p>I'm a PenTester with 1 year of experience, specializing in Coding, Operating Systems, and Networking.</p>
-                <p>Type <span class="command">about</span> to learn more about me or <span class="command">skills</span> to see my technical skills.</p>
             </div>
         </div>
+    </section>
 
-        <!-- Terminal input -->
-        <div class="terminal-input-line">
-            <span class="prompt">terminal@byte0:~$</span>
-            <input type="text" class="terminal-input" id="terminalInput" autocomplete="off" autofocus aria-label="Terminal input">
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-animate>
+                    <div class="project-image">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Security Portfolio</h3>
+                        <p class="project-description">A secure, modern website showcasing my cybersecurity expertise and professional services.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Z0K4/website" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-animate>
+                    <div class="project-image">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Project 2">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Network Vulnerability Scanner</h3>
+                        <p class="project-description">Custom-built tool for automated discovery and assessment of network vulnerabilities with detailed reporting.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Networking</span>
+                            <span class="project-tag">Security</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-animate>
+                    <div class="project-image">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Project 3">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Threat Intelligence Dashboard</h3>
+                        <p class="project-description">Real-time security monitoring dashboard that visualizes potential threats and attack patterns.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">Security APIs</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Power button -->
-    <div class="power-btn" id="powerBtn" title="Power" aria-label="Power button"></div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Terminal elements
-            const terminalContent = document.getElementById('terminalContent');
-            const terminalInput = document.getElementById('terminalInput');
-            const asciiArt = document.getElementById('asciiArt');
-            const powerBtn = document.getElementById('powerBtn');
-
-            // Focus input when clicking anywhere in the terminal
-            document.querySelector('.terminal-container').addEventListener('click', function() {
-                terminalInput.focus();
-            });
-
-            // Command history
-            let commandHistory = [];
-            let historyIndex = -1;
-
-            // Create particles
-            function createParticles() {
-                const particlesContainer = document.getElementById('particles');
-                const particleCount = 20;
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    
-                    // Random size
-                    const size = Math.random() * 4 + 1;
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    
-                    // Random position
-                    const posX = Math.random() * 100;
-                    const posY = Math.random() * 100;
-                    particle.style.left = `${posX}%`;
-                    particle.style.bottom = `${posY}%`;
-                    
-                    // Random animation delay
-                    const delay = Math.random() * 10;
-                    particle.style.animationDelay = `${delay}s`;
-                    
-                    // Random animation duration
-                    const duration = Math.random() * 10 + 10;
-                    particle.style.animationDuration = `${duration}s`;
-                    
-                    particlesContainer.appendChild(particle);
-                }
-            }
-            
-            // Initialize particles
-            createParticles();
-
-            // Power button functionality
-            powerBtn.addEventListener('click', function() {
-                const terminalContainer = document.querySelector('.terminal-container');
-                
-                // Add power-off animation
-                terminalContainer.style.animation = 'none';
-                void terminalContainer.offsetWidth; // Trigger reflow
-                terminalContainer.style.animation = 'powerOff 1s forwards';
-                
-                // Add CRT turn off effect
-                const crtOff = document.createElement('div');
-                crtOff.className = 'crt-off';
-                document.body.appendChild(crtOff);
-                
-                // After animation, reload page
-                setTimeout(() => {
-                    window.location.reload();
-                }, 1000);
-            });
-
-            // Available sections content
-            const sections = {
-                about: `
-                    <div class="section">
-                        <div class="section-title"><i class="fas fa-user"></i> About Me</div>
-                        <p>I'm a PenTester with 1 year of experience. I specialize in Coding, Operating Systems and Networking.</p>
-                        <p>When I'm not coding, you can find me hiking, reading, or experimenting with new security tools.</p>
-                        
-                        <div class="section-title" style="margin-top: 20px;"><i class="fas fa-graduation-cap"></i> Education & Experience</div>
-                        <div class="terminal-table">
-                            <table>
-                                <tr>
-                                    <th>Period</th>
-                                    <th>Focus</th>
-                                    <th>Description</th>
-                                </tr>
-                                <tr>
-                                    <td>2025 - Present</td>
-                                    <td>Networking</td>
-                                    <td>Learned Wireshark, Nmap and other networking tools</td>
-                                </tr>
-                                <tr>
-                                    <td>2024 - 2025</td>
-                                    <td>Linux</td>
-                                    <td>Learned a lot about Linux filesystems and commands</td>
-                                </tr>
-                                <tr>
-                                    <td>2025 - Present</td>
-                                    <td>Password Cracking</td>
-                                    <td>Learned how to crack passwords using various tools</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                `,
-                skills: `
-                    <div class="section">
-                        <div class="section-title"><i class="fas fa-code"></i> Technical Skills</div>
-                        
-                        <div class="grid">
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-laptop-code"></i> Coding</div>
-                                <div class="project-tags">
-                                    <span class="tag highlight">Go</span>
-                                    <span class="tag">Python</span>
-                                    <span class="tag">C++</span>
-                                    <span class="tag">HTML/CSS</span>
-                                </div>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-container-full">
+                <div class="contact-info-full" data-animate>
+                    <p>For security consultations, penetration testing services, or to discuss how I can help secure your digital assets, please reach out through one of the following channels:</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
                             </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-shield-alt"></i> PenTesting</div>
-                                <div class="project-tags">
-                                    <span class="tag highlight">Kali Linux</span>
-                                    <span class="tag">Wireshark</span>
-                                    <span class="tag">AirCrack</span>
-                                    <span class="tag">Wifite</span>
-                                </div>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-tools"></i> Tools & Others</div>
-                                <div class="project-tags">
-                                    <span class="tag highlight">Git</span>
-                                    <span class="tag">Docker</span>
-                                    <span class="tag">AWS</span>
-                                </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <a href="mailto:contact@z0k4.dev">contact@z0k4.dev</a>
                             </div>
                         </div>
-                        
-                        <div class="section-title" style="margin-top: 20px;"><i class="fas fa-chart-bar"></i> Skill Proficiency</div>
-                        
-                        <div style="margin: 15px 0;">
-                            <div style="display: flex; justify-content: space-between;">
-                                <span>Network Security</span>
-                                <span>85%</span>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-shield-alt"></i>
                             </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width: 0%;"></div>
+                            <div class="contact-text">
+                                <h4>Security Inquiries</h4>
+                                <a href="mailto:security@z0k4.dev">security@z0k4.dev</a>
                             </div>
                         </div>
-                        
-                        <div style="margin: 15px 0;">
-                            <div style="display: flex; justify-content: space-between;">
-                                <span>Web Application Testing</span>
-                                <span>75%</span>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width: 0%;"></div>
-                            </div>
-                        </div>
-                        
-                        <div style="margin: 15px 0;">
-                            <div style="display: flex; justify-content: space-between;">
-                                <span>Mobile App Security</span>
-                                <span>60%</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width: 0%;"></div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Remote, Worldwide</p>
                             </div>
                         </div>
-                        
-                        <div style="margin: 15px 0;">
-                            <div style="display: flex; justify-content: space-between;">
-                                <span>Infrastructure Testing</span>
-                                <span>80%</span>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
                             </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width: 0%;"></div>
+                            <div class="contact-text">
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/Z0K4" target="_blank">github.com/Z0K4</a>
                             </div>
                         </div>
                     </div>
-                `,
-                projects: `
-                    <div class="section">
-                        <div class="section-title"><i class="fas fa-project-diagram"></i> Projects</div>
-                        
-                        <div class="project-card">
-                            <div class="project-header">
-                                <div class="project-title">Website</div>
-                                <div class="project-links">
-                                    <a href="https://github.com/Byte0-0x/website" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
-                                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Demo</a>
-                                </div>
-                            </div>
-                            <div class="project-body">
-                                <p>Source code of this website.</p>
-                                <div class="project-tags">
-                                    <span class="tag highlight">HTML</span>
-                                    <span class="tag">CSS</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="project-header">
-                                <div class="project-title">Project 2</div>
-                                <div class="project-links">
-                                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
-                                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Demo</a>
-                                </div>
-                            </div>
-                            <div class="project-body">
-                                <p>Soon.</p>
-                                <div class="project-tags">
-                                    <span class="tag highlight">React</span>
-                                    <span class="tag">Node.js</span>
-                                    <span class="tag">MongoDB</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="project-header">
-                                <div class="project-title">Project 3</div>
-                                <div class="project-links">
-                                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
-                                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Demo</a>
-                                </div>
-                            </div>
-                            <div class="project-body">
-                                <p>Soon.</p>
-                                <div class="project-tags">
-                                    <span class="tag highlight">React</span>
-                                    <span class="tag">Node.js</span>
-                                    <span class="tag">MongoDB</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="security-note">
+                        <p><i class="fas fa-lock"></i> For sensitive communications, please use my <a href="#">PGP key</a> to encrypt your messages.</p>
                     </div>
-                `,
-                services: `
-                    <div class="section">
-                        <div class="section-title"><i class="fas fa-server"></i> Services</div>
-                        
-                        <div class="grid">
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-shield-alt"></i> Network Security</div>
-                                <p>Comprehensive network security assessments to identify vulnerabilities in your infrastructure.</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-laptop-code"></i> Web Application Testing</div>
-                                <p>Thorough testing of web applications to identify security flaws including SQL injection, XSS vulnerabilities.</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-mobile-alt"></i> Mobile App Security</div>
-                                <p>Security assessment of mobile applications on iOS and Android platforms to identify data leakage.</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-server"></i> Infrastructure Testing</div>
-                                <p>Comprehensive security testing of servers, cloud infrastructure, and containerized environments.</p>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                tools: `
-                    <div class="section">
-                        <div class="section-title"><i class="fas fa-tools"></i> Tools</div>
-                        
-                        <div class="grid">
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-network-wired"></i> Wireshark</div>
-                                <p>Network protocol analyzer</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-search"></i> Nmap</div>
-                                <p>Network discovery tool</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-key"></i> Hashcat</div>
-                                <p>Password recovery tool</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-wifi"></i> Aircrack-ng</div>
-                                <p>Wireless security suite</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-bug"></i> Metasploit</div>
-                                <p>Penetration testing framework</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-spider"></i> Burp Suite</div>
-                                <p>Web vulnerability scanner</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-terminal"></i> Kali Linux</div>
-                                <p>Security-focused OS</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title"><i class="fas fa-lock-open"></i> John the Ripper</div>
-                                <p>Password cracker</p>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                stats: `
-                    <div class="section">
-                        <div class="section-title"><i class="fas fa-chart-line"></i> Stats</div>
-                        
-                        <div class="grid">
-                            <div class="grid-item">
-                                <div class="grid-item-title" style="text-align: center; font-size: 2rem;">2+</div>
-                                <p style="text-align: center;">Projects Completed</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title" style="text-align: center; font-size: 2rem;">20+</div>
-                                <p style="text-align: center;">Vulnerabilities Found</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title" style="text-align: center; font-size: 2rem;">3+</div>
-                                <p style="text-align: center;">Happy Clients</p>
-                            </div>
-                            
-                            <div class="grid-item">
-                                <div class="grid-item-title" style="text-align: center; font-size: 2rem;">1+</div>
-                                <p style="text-align: center;">Years Experience</p>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                contact: `
-                    <div class="section">
-                        <div class="section-title"><i class="fas fa-envelope"></i> Contact</div>
-                        <p>You can reach me through the following channels:</p>
-                        
-                        <div style="margin: 15px 0;">
-                            <p><i class="fab fa-github"></i> GitHub: <a href="https://github.com/Byte0-0x" target="_blank" rel="noopener noreferrer">github.com/Byte0-0x</a></p>
-                        </div>
-                        
-                        <div class="terminal-line">
-                            <span class="prompt">terminal@byte0:~$</span>
-                            <span class="command">echo "Looking forward to hearing from you!"</span>
-                        </div>
-                        <div class="terminal-line output">
-                            <p>Looking forward to hearing from you!</p>
-                        </div>
-                    </div>
-                `,
-                help: `
-                    <div class="section">
-                        <div class="section-title"><i class="fas fa-question-circle"></i> Help Menu</div>
-                        <p>Available commands:</p>
-                        
-                        <div class="help-grid">
-                            <div class="help-command">help</div>
-                            <div class="help-description">Display this help menu</div>
-                            
-                            <div class="help-command">about</div>
-                            <div class="help-description">Learn about me</div>
-                            
-                            <div class="help-command">skills</div>
-                            <div class="help-description">View my technical skills</div>
-                            
-                            <div class="help-command">projects</div>
-                            <div class="help-description">Browse my projects</div>
-                            
-                            <div class="help-command">services</div>
-                            <div class="help-description">See services I offer</div>
-                            
-                            <div class="help-command">tools</div>
-                            <div class="help-description">View my favorite tools</div>
-                            
-                            <div class="help-command">stats</div>
-                            <div class="help-description">Display my stats</div>
-                            
-                            <div class="help-command">contact</div>
-                            <div class="help-description">Get my contact information</div>
-                            
-                            <div class="help-command">clear</div>
-                            <div class="help-description">Clear the terminal</div>
-                            
-                            <div class="help-command">banner</div>
-                            <div class="help-description">Display the welcome banner</div>
-                        </div>
-                        
-                        <p style="margin-top: 15px;">Type any command to execute it.</p>
-                    </div>
-                `,
-                banner: `
-                    <div class="terminal-welcome">
-                        <div class="ascii-art">
-                    ██████╗ ██╗   ██╗████████╗███████╗ ██████╗ 
-                    ██╔══██╗╚██╗ ██╔╝╚══██╔══╝██╔════╝██╔═████╗
-                    ██████╔╝ ╚████╔╝    ██║   █████╗  ██║██╔██║
-                    ██╔══██╗  ╚██╔╝     ██║   ██╔══╝  ████╔╝██║
-                    ██████╔╝   ██║      ██║   ███████╗╚██████╔╝
-                    ╚═════╝    ╚═╝      ╚═╝   ╚══════╝ ╚═════╝ 
-                        </div>
-                        <p>Welcome to Byte0's Terminal Portfolio v1.0.0</p>
-                        <p>Type <span class="command">help</span> to see available commands.</p>
-                    </div>
-                `
-            };
+                </div>
+            </div>
+        </div>
+    </section>
 
-            // Fun commands - removed sudo, exit, and ping as requested
-            const funCommands = {};
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Z0K4. All rights reserved.</p>
+            <div class="footer-links-container">
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Penetration Testing</a></li>
+                    <li><a href="#">Vulnerability Assessment</a></li>
+                    <li><a href="#">Security Architecture Review</a></li>
+                    <li><a href="#">Incident Response</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
-            // Process command
-            function processCommand(command) {
-                // Split command and arguments
-                const parts = command.trim().split(' ');
-                const cmd = parts[0].toLowerCase();
-                const args = parts.slice(1);
-                
-                // Add command to history
-                if (command.trim() !== '') {
-                    commandHistory.push(command);
-                    historyIndex = commandHistory.length;
-                }
-                
-                // Add command to terminal
-                const commandLine = document.createElement('div');
-                commandLine.className = 'terminal-line';
-                commandLine.innerHTML = `<span class="prompt">terminal@byte0:~$</span> <span class="command">${command}</span>`;
-                terminalContent.appendChild(commandLine);
-                
-                // Process command
-                let output = '';
-                
-                // Check if command exists in sections
-                if (sections[cmd]) {
-                    output = sections[cmd];
-                } 
-                // Check if command exists in fun commands
-                else if (funCommands[cmd]) {
-                    output = funCommands[cmd](args);
-                }
-                // Handle other commands
-                else if (cmd === 'clear') {
-                    // Clear terminal content except for the scanlines and CRT effect
-                    const scanlines = document.querySelector('.scanlines');
-                    const crtEffect = document.querySelector('.crt-effect');
-                    terminalContent.innerHTML = '';
-                    terminalContent.appendChild(crtEffect);
-                    terminalContent.appendChild(scanlines);
-                    return;
-                }
-                else if (cmd === '') {
-                    // Empty command, do nothing
-                    return;
-                }
-                else {
-                    output = `<p class="error">Command not found: ${cmd}</p><p>Type <span class="command">help</span> to see available commands.</p>`;
-                }
-                
-                // Add output to terminal
-                if (output !== '') {
-                    const outputElement = document.createElement('div');
-                    outputElement.className = 'terminal-line output fade-in';
-                    outputElement.innerHTML = output;
-                    terminalContent.appendChild(outputElement);
-                    
-                    // Animate progress bars if they exist
-                    const progressBars = outputElement.querySelectorAll('.progress-bar');
-                    if (progressBars.length > 0) {
-                        setTimeout(() => {
-                            progressBars.forEach(bar => {
-                                const targetWidth = bar.parentElement.previousElementSibling.lastElementChild.textContent;
-                                bar.style.width = targetWidth;
-                            });
-                        }, 100);
-                    }
-                }
-                
-                // Scroll to bottom
-                terminalContent.scrollTop = terminalContent.scrollHeight;
-            }
-            
-            // Handle input
-            terminalInput.addEventListener('keydown', function(e) {
-                // Enter key
-                if (e.key === 'Enter') {
-                    const command = terminalInput.value;
-                    terminalInput.value = '';
-                    processCommand(command);
-                }
-                
-                // Up arrow - navigate command history
-                else if (e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    if (historyIndex > 0) {
-                        historyIndex--;
-                        terminalInput.value = commandHistory[historyIndex];
-                    }
-                }
-                
-                // Down arrow - navigate command history
-                else if (e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    if (historyIndex < commandHistory.length - 1) {
-                        historyIndex++;
-                        terminalInput.value = commandHistory[historyIndex];
-                    } else {
-                        historyIndex = commandHistory.length;
-                        terminalInput.value = '';
-                    }
-                }
-                
-                // Tab completion
-                else if (e.key === 'Tab') {
-                    e.preventDefault();
-                    const input = terminalInput.value.toLowerCase();
-                    
-                    // Get all available commands - removed sudo, exit, and ping
-                    const availableCommands = [
-                        'help', 'about', 'skills', 'projects', 'services', 
-                        'tools', 'stats', 'contact', 'clear', 'banner'
-                    ];
-                    
-                    // Filter commands that start with input
-                    const matchingCommands = availableCommands.filter(cmd => cmd.startsWith(input));
-                    
-                    // If only one match, complete it
-                    if (matchingCommands.length === 1) {
-                        terminalInput.value = matchingCommands[0];
-                    }
-                    // If multiple matches, show them
-                    else if (matchingCommands.length > 1) {
-                        const commandLine = document.createElement('div');
-                        commandLine.className = 'terminal-line';
-                        commandLine.innerHTML = `<span class="prompt">terminal@byte0:~$</span> <span class="command">${input}</span>`;
-                        terminalContent.appendChild(commandLine);
-                        
-                        const outputElement = document.createElement('div');
-                        outputElement.className = 'terminal-line output';
-                        outputElement.innerHTML = `<p>${matchingCommands.join('  ')}</p>`;
-                        terminalContent.appendChild(outputElement);
-                        
-                        // Scroll to bottom
-                        terminalContent.scrollTop = terminalContent.scrollHeight;
-                    }
-                }
-            });
-
-            // Terminal buttons functionality
-            document.querySelector('.button-close').addEventListener('click', function() {
-                const outputElement = document.createElement('div');
-                outputElement.className = 'terminal-line output';
-                outputElement.innerHTML = '<p class="error">Nice try! You can\'t close this terminal. 😉</p>';
-                terminalContent.appendChild(outputElement);
-                terminalContent.scrollTop = terminalContent.scrollHeight;
-            });
-            
-            document.querySelector('.button-minimize').addEventListener('click', function() {
-                const outputElement = document.createElement('div');
-                outputElement.className = 'terminal-line output';
-                outputElement.innerHTML = '<p class="warning">This terminal cannot be minimized in this environment.</p>';
-                terminalContent.appendChild(outputElement);
-                terminalContent.scrollTop = terminalContent.scrollHeight;
-            });
-            
-            document.querySelector('.button-maximize').addEventListener('click', function() {
-                document.querySelector('.terminal-container').classList.toggle('maximized');
-            });
-            
-            // Add CRT power-off animation
-            document.head.insertAdjacentHTML('beforeend', `
-                <style>
-                    @keyframes powerOff {
-                        0% {
-                            opacity: 1;
-                            transform: scale(1);
-                            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-                        }
-                        5% {
-                            opacity: 0.8;
-                            transform: scale(1.01);
-                        }
-                        15% {
-                            opacity: 0.4;
-                            transform: scale(0.98);
-                        }
-                        30% {
-                            opacity: 0.2;
-                            transform: scale(0.94);
-                        }
-                        100% {
-                            opacity: 0;
-                            transform: scale(0.9);
-                        }
-                    }
-                    
-                    .crt-off {
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: #000;
-                        z-index: 9999;
-                        opacity: 0;
-                        animation: crtOff 1s forwards;
-                    }
-                    
-                    @keyframes crtOff {
-                        0% {
-                            opacity: 0;
-                        }
-                        5% {
-                            opacity: 0.1;
-                        }
-                        10% {
-                            opacity: 0.5;
-                        }
-                        30% {
-                            opacity: 0.2;
-                        }
-                        60% {
-                            opacity: 0.3;
-                        }
-                        100% {
-                            opacity: 1;
-                        }
-                    }
-                </style>
-            `);
-            
-            // Process initial command after a delay
-            setTimeout(() => {
-                processCommand('help');
-            }, 1000);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
