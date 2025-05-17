@@ -259,17 +259,25 @@
             position: relative;
         }
 
-        /* Hero Section */
+        /* Hero Section - Updated for consistent layout */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding: 120px 0 80px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
         }
 
         .hero-content {
-            max-width: 600px;
+            max-width: 100%;
         }
 
         .hero-subtitle {
@@ -296,23 +304,33 @@
         }
 
         .hero-image {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 45%;
-            max-width: 500px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--border-color);
             opacity: 0;
-            animation: fadeIn 1s ease forwards 1s;
+            transform: translateX(50px);
+            animation: fadeInLeft 0.8s ease forwards 0.8s;
+            aspect-ratio: 1/1;
         }
 
         .hero-image img {
             width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: 2px solid var(--border-color);
+            height: 100%;
             object-fit: cover;
+            display: block;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(74, 136, 255, 0.2), rgba(26, 95, 255, 0.2));
+            z-index: 1;
         }
 
         /* About Section */
@@ -757,8 +775,8 @@
 
         /* Responsive Styles - Enhanced for better device support */
         @media (max-width: 1200px) {
-            .hero-image {
-                width: 40%;
+            .hero-grid {
+                gap: 30px;
             }
         }
 
@@ -780,9 +798,16 @@
                 max-width: 500px;
                 margin: 0 auto;
             }
-
+            
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
             .hero-image {
-                width: 35%;
+                transform: translateX(0);
+                max-width: 500px;
+                margin: 0 auto;
             }
         }
 
@@ -827,24 +852,11 @@
             }
 
             .hero {
-                flex-direction: column;
-                text-align: center;
                 padding-top: 100px;
             }
 
-            .hero-content {
-                max-width: 100%;
-                margin-bottom: 50px;
-            }
-
-            .hero-image {
-                position: relative;
-                top: auto;
-                right: auto;
-                transform: none;
-                width: 80%;
-                max-width: 350px;
-                margin: 0 auto;
+            .hero-content, .hero-image {
+                text-align: center;
             }
 
             .about-stats {
@@ -1002,16 +1014,18 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Updated to match layout -->
     <section class="hero" id="home">
         <div class="container">
-            <div class="hero-content">
-                <span class="hero-subtitle">Hi, my name is</span>
-                <h1 class="hero-title">Z0K4</h1>
-                <p class="hero-description">I'm a cybersecurity specialist with expertise in penetration testing, vulnerability assessment, and security hardening. I help organizations identify and mitigate security risks to protect their critical digital assets.</p>
-            </div>
-            <div class="hero-image">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab93d4e9-8ff1-404e-8375-3dcf8ed68c04-BuFRoLTmml4GZsWrey2WpIhMeeNuQA.png" alt="Z0K4 Profile">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="hero-subtitle">Hi, my name is</span>
+                    <h1 class="hero-title">Z0K4</h1>
+                    <p class="hero-description">I'm a cybersecurity specialist with expertise in penetration testing, vulnerability assessment, and security hardening. I help organizations identify and mitigate security risks to protect their critical digital assets.</p>
+                </div>
+                <div class="hero-image">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab93d4e9-8ff1-404e-8375-3dcf8ed68c04-BuFRoLTmml4GZsWrey2WpIhMeeNuQA.png" alt="Z0K4 Profile">
+                </div>
             </div>
         </div>
     </section>
