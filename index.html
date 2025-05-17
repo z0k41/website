@@ -287,26 +287,6 @@
             animation: fadeInUp 0.5s ease forwards 0.6s;
         }
 
-        .hero-cta {
-            display: inline-block;
-            background: linear-gradient(to right, var(--accent-color), var(--accent-secondary)); /* Now blue to blue gradient */
-            color: var(--text-color);
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(74, 136, 255, 0.4);
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.5s ease forwards 0.8s;
-        }
-
-        .hero-cta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(74, 136, 255, 0.6);
-            color: var(--text-color);
-        }
-
         .hero-image {
             position: absolute;
             right: 0;
@@ -582,131 +562,6 @@
             color: var(--accent-color);
         }
 
-        /* Contact Section */
-        .contact {
-            position: relative;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .contact-info {
-            opacity: 0;
-            transform: translateX(-50px);
-        }
-
-        .contact-info.animated {
-            animation: fadeInRight 0.8s ease forwards;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--card-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .contact-item:hover .contact-icon {
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            transform: scale(1.1);
-        }
-
-        .contact-text h4 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .contact-text p, .contact-text a {
-            font-size: 0.95rem;
-            color: var(--text-color);
-        }
-
-        .contact-text a:hover {
-            color: var(--accent-color);
-        }
-
-        .contact-form {
-            background-color: var(--card-bg);
-            padding: 40px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            opacity: 0;
-            transform: translateX(50px);
-        }
-
-        .contact-form.animated {
-            animation: fadeInLeft 0.8s ease forwards;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            color: var(--text-color);
-            font-family: var(--font-main);
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(74, 136, 255, 0.2);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: linear-gradient(to right, var(--accent-color), var(--accent-secondary)); /* Now blue to blue gradient */
-            color: var(--text-color);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: var(--font-main);
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(74, 136, 255, 0.3);
-        }
-
         /* Footer */
         footer {
             background-color: var(--bg-secondary);
@@ -878,16 +733,16 @@
 
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .about-grid, .contact-container {
+            .about-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
 
-            .about-image, .contact-info {
+            .about-image {
                 transform: translateX(0);
             }
 
-            .about-content, .contact-form {
+            .about-content {
                 transform: translateX(0);
             }
 
@@ -974,7 +829,6 @@
                     <a href="#about">About</a>
                     <a href="#skills">Skills</a>
                     <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
                 </div>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
@@ -989,8 +843,7 @@
             <div class="hero-content">
                 <span class="hero-subtitle">Hi, my name is</span>
                 <h1 class="hero-title">Z0K4</h1>
-                <p class="hero-description">I'm a PenTester with 1 year of experience, specializing in Coding, Operating Systems, and Networking. I help organizations secure their digital assets through comprehensive security assessments.</p>
-                <a href="#contact" class="hero-cta">Get In Touch</a>
+                <p class="hero-description">I'm a cybersecurity specialist with expertise in penetration testing, vulnerability assessment, and security hardening. I help organizations identify and mitigate security risks to protect their critical digital assets.</p>
             </div>
             <div class="hero-image">
                 <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab93d4e9-8ff1-404e-8375-3dcf8ed68c04-BuFRoLTmml4GZsWrey2WpIhMeeNuQA.png" alt="Z0K4 Profile">
@@ -1007,8 +860,8 @@
                     <img src="/placeholder.svg?height=500&width=500" alt="About Z0K4">
                 </div>
                 <div class="about-content" data-animate>
-                    <p>I'm a passionate Cyber Security Specialist with a focus on penetration testing and vulnerability assessment. My journey in the cyber security field began with a fascination for understanding how systems work and how they can be secured against potential threats.</p>
-                    <p>When I'm not hunting for vulnerabilities, you can find me hiking, reading, or experimenting with new security tools and techniques to stay ahead in this ever-evolving field.</p>
+                    <p>I'm a dedicated cybersecurity specialist with a focus on penetration testing, vulnerability assessment, and security architecture. My expertise lies in identifying security weaknesses in networks, applications, and infrastructure before malicious actors can exploit them.</p>
+                    <p>With a strong background in offensive security techniques and defensive countermeasures, I provide comprehensive security solutions that help organizations strengthen their security posture and protect sensitive data from emerging threats.</p>
                     <div class="about-stats">
                         <div class="stat-item">
                             <div class="stat-number">1+</div>
@@ -1145,12 +998,12 @@
                         <img src="/placeholder.svg?height=200&width=300" alt="Project 2">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Project 2</h3>
-                        <p class="project-description">Coming soon. A new project focused on security tools and automation.</p>
+                        <h3 class="project-title">Network Vulnerability Scanner</h3>
+                        <p class="project-description">A custom-built tool for identifying security weaknesses in network infrastructure.</p>
                         <div class="project-tags">
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">Node.js</span>
-                            <span class="project-tag">MongoDB</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Networking</span>
+                            <span class="project-tag">Security</span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link" target="_blank">
@@ -1167,12 +1020,12 @@
                         <img src="/placeholder.svg?height=200&width=300" alt="Project 3">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Project 3</h3>
-                        <p class="project-description">Coming soon. An innovative approach to security visualization and monitoring.</p>
+                        <h3 class="project-title">Security Dashboard</h3>
+                        <p class="project-description">An interactive dashboard for visualizing security metrics and threat intelligence data.</p>
                         <div class="project-tags">
                             <span class="project-tag">React</span>
                             <span class="project-tag">Node.js</span>
-                            <span class="project-tag">MongoDB</span>
+                            <span class="project-tag">Data Visualization</span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link" target="_blank">
@@ -1188,73 +1041,13 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info" data-animate>
-                    <p>Feel free to reach out if you're looking for a penetration tester, have a question, or just want to connect.</p>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <a href="mailto:contact@z0k4.dev">contact@z0k4.dev</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Location</h4>
-                            <p>Remote, Worldwide</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>GitHub</h4>
-                            <a href="https://github.com/Z0K4" target="_blank">github.com/Z0K4</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form" data-animate>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject" class="form-label">Subject</label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-container">
                 <div class="footer-info">
                     <a href="#" class="footer-logo"><span>Z0K4</span>_</a>
-                    <p class="footer-about">Cyber Security Specialist focused on penetration testing and vulnerability assessment. Helping organizations secure their digital assets.</p>
+                    <p class="footer-about">Cybersecurity specialist focused on penetration testing, vulnerability assessment, and security architecture. Helping organizations protect their critical digital assets from emerging threats.</p>
                     <div class="footer-social">
                         <a href="#" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="#" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -1269,7 +1062,6 @@
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-links-container">
@@ -1370,28 +1162,6 @@
             }
             
             createParticles();
-
-            // Form submission
-            const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form values
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value;
-                
-                // Here you would normally send the form data to a server
-                // For demo purposes, we'll just log it and show a success message
-                console.log({ name, email, subject, message });
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Show success message (you could create a better UI for this)
-                alert('Thank you for your message! I will get back to you soon.');
-            });
         });
     </script>
 </body>
